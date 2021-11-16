@@ -11,7 +11,7 @@ createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => require(`./Pages/${name}`),
     setup({ el, App, props }) {
-        return render(<App {...props} />, el);
+        // return render(<App {...props} />, el);
     },
 });
 
