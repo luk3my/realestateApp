@@ -2,6 +2,8 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+
 use Inertia\Inertia;
 
 use App\Models\Listing;
@@ -22,7 +24,7 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
-        'Listings' => Listing::all()
+        'Listings' => DB::table('Listings')->paginate(5)
     ]);
 });
 

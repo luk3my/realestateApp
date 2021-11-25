@@ -5538,13 +5538,24 @@ function Home(props) {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "grid grid-cols-2 gap-4",
-      children: listings.length > 0 ? listings.map(function (listing) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "bg-white rounded-md p-1",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+      className: "grid grid-cols-1 gap-6",
+      children: listings.data.length > 0 ? listings.data.map(function (listing) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "bg-white rounded-md p-4",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            src: "./storage/images/brick.jpg",
+            alt: "brickhouse",
+            className: "max-w-md rounded-md mb-2"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            className: "font-extrabold text-lg mb-2",
             children: listing.title
-          })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+            className: "mr-14",
+            children: ["Rooms: ", listing.rooms]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+            className: "",
+            children: ["Size: ", listing.area, " sqm"]
+          })]
         }, listing.id);
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "col-span-4 lg:text-center lg:pt-14 mb-10",
