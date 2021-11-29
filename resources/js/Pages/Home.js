@@ -47,9 +47,7 @@ export default function Home(props) {
                 )}      
                 </div>
  
-                 {/* {listings.links.map(link => (
-                    <a href={link.url}>{link.label}</a>
-                ))}     */}
+              
 
             </div>
 
