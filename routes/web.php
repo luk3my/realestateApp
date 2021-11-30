@@ -2,7 +2,9 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\ListingController;
+
+
 
 use Inertia\Inertia;
 
@@ -28,7 +30,10 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::get('/', 'ListingController@index');
+// Route::get('listings', 'ListingController@index');
+Route::get('listings', function() {
+    return DB::table('Listings')->paginate(5);
+});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

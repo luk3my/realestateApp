@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Link, Head } from '@inertiajs/inertia-react';
+import axios from 'axios';
+import Pagination from 'react-js-pagination';
 
 
 export default function Home(props) {
@@ -9,6 +11,12 @@ export default function Home(props) {
     useEffect(() => {
       setListings(props.Listings);
     }, [props.Listings])
+
+    const getData=(pageNumber)=>{
+        axios.get(`listings?page=${pageNumber}`).then(response => {
+          setListings(response.data);
+        });
+    }
 
     return (
             <div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
@@ -44,11 +52,16 @@ export default function Home(props) {
                         <div className="col-span-4 lg:text-center lg:pt-14 mb-10">
                            There are no tasks to show
                         </div>
-                )}      
+                )}     
+                    <Pagination
+                        activePage={listings.current_page}
+                        itemsCountPerPage={listings.per_page}
+                        totalItemsCount={listings.total}
+                        pageRangeDisplayed={listings.per_page}
+                        onChange={getData}
+                    />  
                 </div>
  
-              
-
             </div>
 
           
