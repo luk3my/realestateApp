@@ -3,7 +3,6 @@ import { Link, Head } from '@inertiajs/inertia-react';
 import axios from 'axios';
 import Pagination from 'react-js-pagination';
 
-
 export default function Home(props) {
   
     const [listings, setListings] = useState({...props.Listings});
@@ -59,6 +58,10 @@ export default function Home(props) {
                         totalItemsCount={listings.total}
                         pageRangeDisplayed={listings.per_page}
                         onChange={getData}
+                        itemClass="page-item"
+                        itemClass="page-link"
+                        firstPageText="First"
+                        lastPageText="Last"
                     />  
                 </div>
  

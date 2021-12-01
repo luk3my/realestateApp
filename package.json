@@ -33,6 +33,7 @@
         "tailwindcss": "^2.1.2"
     },
     "dependencies": {
+        "react-bootstrap": "^2.0.3",
         "react-js-pagination": "^3.0.3"
     }
 }
