@@ -20,6 +20,8 @@ use App\Models\Listing;
 |
 */
 
+// Views
+
 Route::get('/', function () {
     return Inertia::render('Home', [
         'canLogin' => Route::has('login'),
@@ -30,13 +32,12 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::get('listings', 'ListingController@index');
-Route::get('listings', function() {
-    return DB::table('Listings')->paginate(5);
-});
-
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+// Endpoints
+
+Route::get('listings', [ListingController::class, 'index']);
