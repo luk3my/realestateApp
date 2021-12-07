@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Listing extends Model
 {
     use HasFactory;
-    protected $gaurded = [];
-
+    protected $gaurded = ['id'];
+    protected $fillable = ['type_id'];
 
     public function type()
     {
