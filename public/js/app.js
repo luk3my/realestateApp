@@ -5440,18 +5440,133 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
 
 
 function Dashboard(props) {
-  var submit = function submit(e) {
+  var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    axios.post("listings").then(function (response) {
+    var data = {
+      type: type,
+      suburb: suburb,
+      title: title,
+      street_address: stAdr,
+      area: area,
+      rooms: rooms,
+      price: price,
+      blurb: blurb,
+      description: desc,
+      img_path: imgPath
+    };
+    axios.post("listings", data).then(function (response) {
       //modal
+      console.log(response);
       alert('New Listing Added');
     });
+  };
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('1'),
+      _useState2 = _slicedToArray(_useState, 2),
+      type = _useState2[0],
+      setType = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('1'),
+      _useState4 = _slicedToArray(_useState3, 2),
+      suburb = _useState4[0],
+      setSuburb = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      title = _useState6[0],
+      setTitle = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      stAdr = _useState8[0],
+      setStAdr = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState10 = _slicedToArray(_useState9, 2),
+      area = _useState10[0],
+      setArea = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('1'),
+      _useState12 = _slicedToArray(_useState11, 2),
+      rooms = _useState12[0],
+      setRooms = _useState12[1];
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState14 = _slicedToArray(_useState13, 2),
+      price = _useState14[0],
+      setPrice = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState16 = _slicedToArray(_useState15, 2),
+      blurb = _useState16[0],
+      setBlurb = _useState16[1];
+
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState18 = _slicedToArray(_useState17, 2),
+      desc = _useState18[0],
+      setDesc = _useState18[1];
+
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState20 = _slicedToArray(_useState19, 2),
+      imgPath = _useState20[0],
+      setImgPath = _useState20[1];
+
+  var handleTypeChange = function handleTypeChange(e) {
+    return setType(e.target.value);
+  };
+
+  var handleSuburbChange = function handleSuburbChange(e) {
+    return setSuburb(e.target.value);
+  };
+
+  var handleTitleChange = function handleTitleChange(e) {
+    return setTitle(e.target.value);
+  };
+
+  var handleStAdrChange = function handleStAdrChange(e) {
+    return setStAdr(e.target.value);
+  };
+
+  var handleAreaChange = function handleAreaChange(e) {
+    return setArea(e.target.value);
+  };
+
+  var handleRoomsChange = function handleRoomsChange(e) {
+    return setRooms(e.target.value);
+  };
+
+  var handlePriceChange = function handlePriceChange(e) {
+    return setPrice(e.target.value);
+  };
+
+  var handleBlurbChange = function handleBlurbChange(e) {
+    return setBlurb(e.target.value);
+  };
+
+  var handleDescChange = function handleDescChange(e) {
+    return setDesc(e.target.value);
+  };
+
+  var handleImgPathChange = function handleImgPathChange(e) {
+    return setImgPath(e.target.value);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -5476,6 +5591,7 @@ function Dashboard(props) {
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
             className: "p-6",
+            onSubmit: handleSubmit,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "form-group",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
@@ -5484,6 +5600,8 @@ function Dashboard(props) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
                 className: "form-control",
                 id: "type",
+                value: type,
+                onChange: handleTypeChange,
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
                   value: "1",
                   children: "House"
@@ -5503,6 +5621,8 @@ function Dashboard(props) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("select", {
                 className: "form-control",
                 id: "suburb",
+                value: suburb,
+                onChange: handleSuburbChange,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
                   value: "1",
                   children: "Test"
@@ -5517,7 +5637,9 @@ function Dashboard(props) {
                 type: "input",
                 className: "form-control",
                 id: "title",
-                placeholder: "Listing title"
+                placeholder: "Listing title",
+                value: title,
+                onChange: handleTitleChange
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "form-group",
@@ -5528,7 +5650,9 @@ function Dashboard(props) {
                 type: "input",
                 className: "form-control",
                 id: "street_address",
-                placeholder: "Street address"
+                placeholder: "Street address",
+                value: stAdr,
+                onChange: handleStAdrChange
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "form-group",
@@ -5539,7 +5663,22 @@ function Dashboard(props) {
                 type: "input",
                 className: "form-control",
                 id: "price",
-                placeholder: "price"
+                placeholder: "price",
+                value: price,
+                onChange: handlePriceChange
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+                "for": "price",
+                children: "Area"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                type: "input",
+                className: "form-control",
+                id: "area",
+                placeholder: "area m2",
+                value: area,
+                onChange: handleAreaChange
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "form-group",
@@ -5549,6 +5688,8 @@ function Dashboard(props) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
                 className: "form-control",
                 id: "rooms",
+                value: rooms,
+                onChange: handleRoomsChange,
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
                   value: "1",
                   children: "1"
@@ -5578,7 +5719,9 @@ function Dashboard(props) {
                 rows: "3",
                 className: "form-control",
                 id: "description",
-                placeholder: "description"
+                placeholder: "description",
+                value: desc,
+                onChange: handleDescChange
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "form-group",
@@ -5589,16 +5732,20 @@ function Dashboard(props) {
                 rows: "3",
                 className: "form-control",
                 id: "blurb",
-                placeholder: "Sales blurb"
+                placeholder: "Sales blurb",
+                value: blurb,
+                onChange: handleBlurbChange
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
               id: "image",
               name: "input-b2",
               type: "file",
               className: "file mb-10",
-              "data-show-preview": "true"
+              "data-show-preview": "true",
+              value: imgPath,
+              onChange: handleImgPathChange
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              onClick: submit,
+              type: "submit",
               className: "btn btn-primary",
               children: "Submit"
             })]
