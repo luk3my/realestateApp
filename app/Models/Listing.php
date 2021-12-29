@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Listing extends Model
 {
     use HasFactory;
-    protected $gaurded = ['id'];
-    protected $fillable = ['type_id'];
+    protected $fillable = ['type_id', 'suburb_id', 'title', 'street_address', 'area', 'rooms', 'price', 'blurb', 'description', 'img_path', 'listed_at'];
 
     public function type()
     {

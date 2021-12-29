@@ -6,20 +6,18 @@ export default function Dashboard(props) {
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        let data = {type: type, 
-                    suburb: suburb,
-                    title: title,
-                    street_address: stAdr,
-                    area: area,
-                    rooms: rooms,
-                    price: price,
-                    blurb: blurb,
-                    description: desc,
-                    img_path: imgPath
-                };
-        axios.post(`listings`, data).then(response => {
-            //modal
-            console.log(response)
+        const fData = new FormData();
+        fData.append('image', img);
+        fData.append('type', type);
+        fData.append('suburb', suburb);
+        fData.append('title', title);
+        fData.append('street_address', stAdr);
+        fData.append('area', area);
+        fData.append('rooms', rooms);
+        fData.append('price', price);
+        fData.append('blurb', blurb);
+        fData.append('description', desc);
+        axios.post(`listings`, fData).then(response => {
             alert('New Listing Added');
         });
     }
@@ -33,7 +31,7 @@ export default function Dashboard(props) {
     const [price, setPrice] = useState('');
     const [blurb, setBlurb] = useState('');
     const [desc, setDesc] = useState('');
-    const [imgPath, setImgPath] = useState('');
+    const [img, setImg] = useState('');
 
     const handleTypeChange=(e)=> setType(e.target.value);
     const handleSuburbChange=(e)=> setSuburb(e.target.value);
@@ -44,7 +42,7 @@ export default function Dashboard(props) {
     const handlePriceChange=(e)=> setPrice(e.target.value);
     const handleBlurbChange=(e)=> setBlurb(e.target.value);
     const handleDescChange=(e)=> setDesc(e.target.value);
-    const handleImgPathChange=(e)=> setImgPath(e.target.value);
+    const handleImgPathChange=(e)=> setImg(e.target.files[0]);
 
     return (
         <Authenticated
@@ -64,7 +62,7 @@ export default function Dashboard(props) {
 
                     <form className="p-6" onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label for="exampleFormControlSelect1">Property Type</label>
+                            <label htmlFor="exampleFormControlSelect1">Property Type</label>
                             <select className="form-control" id="type" value={type} onChange={handleTypeChange}>
                                 <option value="1">House</option>
                                 <option value="2">Townhouse</option>
@@ -72,29 +70,29 @@ export default function Dashboard(props) {
                             </select>
                         </div>
                         <div className="form-group">
-                            <label for="suburb">Suburb</label>
+                            <label htmlFor="suburb">Suburb</label>
                             <select className="form-control" id="suburb" value={suburb} onChange={handleSuburbChange}>
                                 <option value="1">Test</option>
                             </select>
                         </div>
                         <div className="form-group">
-                            <label for="title">Title</label>
+                            <label htmlFor="title">Title</label>
                             <input type="input" className="form-control" id="title" placeholder="Listing title" value={title} onChange={handleTitleChange} />
                         </div>
                          <div className="form-group">
-                            <label for="street_address">Address</label>
+                            <label htmlFor="street_address">Address</label>
                             <input type="input" className="form-control" id="street_address" placeholder="Street address"  value={stAdr} onChange={handleStAdrChange}/>
                         </div>
                         <div className="form-group">
-                            <label for="price">Price</label>
+                            <label htmlFor="price">Price</label>
                             <input type="input" className="form-control" id="price" placeholder="price" value={price} onChange={handlePriceChange}/>
                         </div>
                         <div className="form-group">
-                            <label for="price">Area</label>
+                            <label htmlFor="price">Area</label>
                             <input type="input" className="form-control" id="area" placeholder="area m2" value={area} onChange={handleAreaChange}/>
                         </div>
                           <div className="form-group">
-                            <label for="exampleFormControlSelect1">No. of Bedrooms</label>
+                            <label htmlFor="exampleFormControlSelect1">No. of Bedrooms</label>
                             <select className="form-control" id="rooms" value={rooms} onChange={handleRoomsChange}>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -105,11 +103,11 @@ export default function Dashboard(props) {
                             </select>
                         </div>
                         <div className="form-group">
-                            <label for="description">Description</label>
+                            <label htmlFor="description">Description</label>
                             <textarea rows="3" className="form-control" id="description" placeholder="description" value={desc} onChange={handleDescChange}></textarea>
                         </div>
                           <div className="form-group">
-                            <label for="blurb">Blurb</label>
+                            <label htmlFor="blurb">Blurb</label>
                             <textarea rows="3" className="form-control" id="blurb" placeholder="Sales blurb" value={blurb} onChange={handleBlurbChange}></textarea>
                         </div>
                         <input id="image" name="input-b2" type="file" className="file mb-10" data-show-preview="true" value={imgPath} onChange={handleImgPathChange}/>

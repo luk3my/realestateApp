@@ -41,7 +41,7 @@ export default function Home(props) {
                  {listings.data.length > 0 ? (
                       listings.data.map(listing => (    
                         <div key={listing.id} className="bg-white rounded-md p-4">
-                            <img src="./storage/images/brick.jpg" alt="brickhouse" className="max-w-md rounded-md mb-2"/>
+                            <img src={listing.img_path} alt="Property Image" className="max-w-md rounded-md mb-2"/>
                             <span className="font-extrabold text-lg mb-2">{listing.title}</span><br/>
                             <span className="mr-14">Rooms: {listing.rooms}</span>
                             <span className="">Size: {listing.area} sqm</span>

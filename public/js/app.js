@@ -5460,21 +5460,18 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function Dashboard(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    var data = {
-      type: type,
-      suburb: suburb,
-      title: title,
-      street_address: stAdr,
-      area: area,
-      rooms: rooms,
-      price: price,
-      blurb: blurb,
-      description: desc,
-      img_path: imgPath
-    };
-    axios.post("listings", data).then(function (response) {
-      //modal
-      console.log(response);
+    var fData = new FormData();
+    fData.append('image', img);
+    fData.append('type', type);
+    fData.append('suburb', suburb);
+    fData.append('title', title);
+    fData.append('street_address', stAdr);
+    fData.append('area', area);
+    fData.append('rooms', rooms);
+    fData.append('price', price);
+    fData.append('blurb', blurb);
+    fData.append('description', desc);
+    axios.post("listings", fData).then(function (response) {
       alert('New Listing Added');
     });
   };
@@ -5526,8 +5523,8 @@ function Dashboard(props) {
 
   var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState20 = _slicedToArray(_useState19, 2),
-      imgPath = _useState20[0],
-      setImgPath = _useState20[1];
+      img = _useState20[0],
+      setImg = _useState20[1];
 
   var handleTypeChange = function handleTypeChange(e) {
     return setType(e.target.value);
@@ -5566,7 +5563,7 @@ function Dashboard(props) {
   };
 
   var handleImgPathChange = function handleImgPathChange(e) {
-    return setImgPath(e.target.value);
+    return setImg(e.target.files[0]);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -5595,7 +5592,7 @@ function Dashboard(props) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "form-group",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                "for": "exampleFormControlSelect1",
+                htmlFor: "exampleFormControlSelect1",
                 children: "Property Type"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
                 className: "form-control",
@@ -5616,7 +5613,7 @@ function Dashboard(props) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "form-group",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                "for": "suburb",
+                htmlFor: "suburb",
                 children: "Suburb"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("select", {
                 className: "form-control",
@@ -5631,7 +5628,7 @@ function Dashboard(props) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "form-group",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                "for": "title",
+                htmlFor: "title",
                 children: "Title"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "input",
@@ -5644,7 +5641,7 @@ function Dashboard(props) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "form-group",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                "for": "street_address",
+                htmlFor: "street_address",
                 children: "Address"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "input",
@@ -5657,7 +5654,7 @@ function Dashboard(props) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "form-group",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                "for": "price",
+                htmlFor: "price",
                 children: "Price"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "input",
@@ -5670,7 +5667,7 @@ function Dashboard(props) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "form-group",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                "for": "price",
+                htmlFor: "price",
                 children: "Area"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "input",
@@ -5683,7 +5680,7 @@ function Dashboard(props) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "form-group",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                "for": "exampleFormControlSelect1",
+                htmlFor: "exampleFormControlSelect1",
                 children: "No. of Bedrooms"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
                 className: "form-control",
@@ -5713,7 +5710,7 @@ function Dashboard(props) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "form-group",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                "for": "description",
+                htmlFor: "description",
                 children: "Description"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("textarea", {
                 rows: "3",
@@ -5726,7 +5723,7 @@ function Dashboard(props) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "form-group",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                "for": "blurb",
+                htmlFor: "blurb",
                 children: "Blurb"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("textarea", {
                 rows: "3",
@@ -5842,8 +5839,8 @@ function Home(props) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "bg-white rounded-md p-4",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-            src: "./storage/images/brick.jpg",
-            alt: "brickhouse",
+            src: listing.img_path,
+            alt: "Property Image",
             className: "max-w-md rounded-md mb-2"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
             className: "font-extrabold text-lg mb-2",
