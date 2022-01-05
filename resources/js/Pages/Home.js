@@ -17,8 +17,29 @@ export default function Home(props) {
         });
     }
 
+    const headerStyle = {
+        width: 'auto',
+        height: '700px',
+        backgroundImage: `url(../../images/headerImg.jpg)`,
+        backgroundSize: 'cover',
+   
+    };
+
+    const boxStyle = {
+        position: 'relative',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        top: '140px',
+        zIndex: '1000',
+        backgroundColor: 'rgba(0,0,0,.6)',
+        padding: '5px',
+        color: '#FFFFFF',
+        width: '80%',
+        height: '250px',
+    };
+
     return (
-            <div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+            <div>
                 <div className="fixed top-0 right-0 px-6 py-4 sm:block">
                     {props.auth.user ? (
                         <Link href={route('dashboard')} className="text-sm text-gray-700 underline">
@@ -29,44 +50,44 @@ export default function Home(props) {
                             <Link href={route('login')} className="text-sm text-gray-700 underline">
                                 Log in
                             </Link>
-
                             <Link href={route('register')} className="ml-4 text-sm text-gray-700 underline">
                                 Register
                             </Link>
                         </div>
                     )}
                 </div>
-
-                <div className="grid grid-cols-1 gap-6">
-                 {listings.data.length > 0 ? (
-                      listings.data.map(listing => (    
-                        <div key={listing.id} className="bg-white rounded-md p-4">
-                            <img src={listing.img_path} alt="Property Image" className="max-w-md rounded-md mb-2"/>
-                            <span className="font-extrabold text-lg mb-2">{listing.title}</span><br/>
-                            <span className="mr-14">Rooms: {listing.rooms}</span>
-                            <span className="">Size: {listing.area} sqm</span>
-                        </div>
-                   ))
-                    ) : (
-                        <div className="col-span-4 lg:text-center lg:pt-14 mb-10">
-                           There are no tasks to show
-                        </div>
-                )}     
-                    <Pagination
-                        activePage={listings.current_page}
-                        itemsCountPerPage={listings.per_page}
-                        totalItemsCount={listings.total}
-                        pageRangeDisplayed={listings.per_page}
-                        onChange={getData}
-                        itemClass="page-item"
-                        itemClass="page-link"
-                        firstPageText="First"
-                        lastPageText="Last"
-                    />  
+                <header style={headerStyle} className="w-full h-11">
+                    <div style={boxStyle}></div>
+                </header>
+                <div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+                    <div className="grid grid-cols-1 gap-6">
+                    {listings.data.length > 0 ? (
+                        listings.data.map(listing => (    
+                            <div key={listing.id} className="bg-white rounded-md p-4">
+                                <img src={listing.img_path} alt="Property Image" className="max-w-md rounded-md mb-2"/>
+                                <span className="font-extrabold text-lg mb-2">{listing.title}</span><br/>
+                                <span className="mr-14">Rooms: {listing.rooms}</span>
+                                <span className="">Size: {listing.area} sqm</span>
+                            </div>
+                    ))
+                        ) : (
+                            <div className="col-span-4 lg:text-center lg:pt-14 mb-10">
+                            There are no tasks to show
+                            </div>
+                    )}     
+                        <Pagination
+                            activePage={listings.current_page}
+                            itemsCountPerPage={listings.per_page}
+                            totalItemsCount={listings.total}
+                            pageRangeDisplayed={listings.per_page}
+                            onChange={getData}
+                            itemClass="page-item"
+                            itemClass="page-link"
+                            firstPageText="First"
+                            lastPageText="Last"
+                        />  
+                    </div>
                 </div>
- 
-            </div>
-
-          
-    )
+            </div>  
+        )
 }

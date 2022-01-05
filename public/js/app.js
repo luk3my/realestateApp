@@ -5869,8 +5869,25 @@ function Home(props) {
     });
   };
 
+  var headerStyle = {
+    width: 'auto',
+    height: '700px',
+    backgroundImage: "url(../../images/headerImg.jpg)",
+    backgroundSize: 'cover'
+  };
+  var boxStyle = {
+    position: 'relative',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    top: '140px',
+    zIndex: '1000',
+    backgroundColor: 'rgba(0,0,0,.6)',
+    padding: '5px',
+    color: '#FFFFFF',
+    width: '80%',
+    height: '250px'
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    className: "relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "fixed top-0 right-0 px-6 py-4 sm:block",
       children: props.auth.user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
@@ -5888,37 +5905,46 @@ function Home(props) {
           children: "Register"
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "grid grid-cols-1 gap-6",
-      children: [listings.data.length > 0 ? listings.data.map(function (listing) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "bg-white rounded-md p-4",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-            src: listing.img_path,
-            alt: "Property Image",
-            className: "max-w-md rounded-md mb-2"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            className: "font-extrabold text-lg mb-2",
-            children: listing.title
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-            className: "mr-14",
-            children: ["Rooms: ", listing.rooms]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-            className: "",
-            children: ["Size: ", listing.area, " sqm"]
-          })]
-        }, listing.id);
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "col-span-4 lg:text-center lg:pt-14 mb-10",
-        children: "There are no tasks to show"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_js_pagination__WEBPACK_IMPORTED_MODULE_3__["default"], (_jsx2 = {
-        activePage: listings.current_page,
-        itemsCountPerPage: listings.per_page,
-        totalItemsCount: listings.total,
-        pageRangeDisplayed: listings.per_page,
-        onChange: getData,
-        itemClass: "page-item"
-      }, _defineProperty(_jsx2, "itemClass", "page-link"), _defineProperty(_jsx2, "firstPageText", "First"), _defineProperty(_jsx2, "lastPageText", "Last"), _jsx2))]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("header", {
+      style: headerStyle,
+      className: "w-full h-11",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        style: boxStyle
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "grid grid-cols-1 gap-6",
+        children: [listings.data.length > 0 ? listings.data.map(function (listing) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "bg-white rounded-md p-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+              src: listing.img_path,
+              alt: "Property Image",
+              className: "max-w-md rounded-md mb-2"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              className: "font-extrabold text-lg mb-2",
+              children: listing.title
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+              className: "mr-14",
+              children: ["Rooms: ", listing.rooms]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+              className: "",
+              children: ["Size: ", listing.area, " sqm"]
+            })]
+          }, listing.id);
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "col-span-4 lg:text-center lg:pt-14 mb-10",
+          children: "There are no tasks to show"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_js_pagination__WEBPACK_IMPORTED_MODULE_3__["default"], (_jsx2 = {
+          activePage: listings.current_page,
+          itemsCountPerPage: listings.per_page,
+          totalItemsCount: listings.total,
+          pageRangeDisplayed: listings.per_page,
+          onChange: getData,
+          itemClass: "page-item"
+        }, _defineProperty(_jsx2, "itemClass", "page-link"), _defineProperty(_jsx2, "firstPageText", "First"), _defineProperty(_jsx2, "lastPageText", "Last"), _jsx2))]
+      })
     })]
   });
 }
