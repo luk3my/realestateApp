@@ -29,15 +29,16 @@ export default function Home(props) {
         position: 'relative',
         marginLeft: 'auto',
         marginRight: 'auto',
-        top: '140px',
+        top: '180px',
         zIndex: '1000',
         backgroundColor: 'rgba(0,0,0,.6)',
         padding: '5px',
         color: '#FFFFFF',
         width: '80%',
         height: '250px',
+        padding: '15px'
     };
-
+    
     return (
             <div>
                 <div className="fixed top-0 right-0 px-6 py-4 sm:block">
@@ -57,7 +58,37 @@ export default function Home(props) {
                     )}
                 </div>
                 <header style={headerStyle} className="w-full h-11">
-                    <div style={boxStyle}></div>
+                    <div style={boxStyle}>
+                        <span className="text-2xl ml-6 mt-6">Search properties for sale</span><br/><br/>
+                        <form className="pl-6 pr-6 h-40 grid grid-cols-3 gap-4 content-center">
+                            <div className="form-group">
+                                <label htmlFor="exampleFormControlSelect1">Property Type</label>
+                                <select className="form-control" id="type">
+                                    <option value="1">House</option>
+                                    <option value="2">Townhouse</option>
+                                    <option value="3">Appartment</option>
+                                </select>
+                                <div id="type_error"></div>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="exampleFormControlSelect1">Suburb</label>
+                                <select className="form-control" id="suburb">
+                                    <option value="1">Wellington Point</option>
+                                    <option value="2">Birkdale</option>
+                                    <option value="3">Cleveland</option>
+                                </select>
+                                <div id="type_error"></div>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="exampleFormControlSelect1">Price</label>
+                                <select className="form-control" id="price">
+                                    <option value="1">&lt; 500k</option>
+                                    <option value="2">&gt; 500k</option>
+                                </select>
+                                <div id="type_error"></div>
+                            </div>
+                        </form>
+                    </div>
                 </header>
                 <div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
                     <div className="grid grid-cols-1 gap-6">
