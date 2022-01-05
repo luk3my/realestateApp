@@ -5880,7 +5880,7 @@ function Home(props) {
     position: 'relative',
     marginLeft: 'auto',
     marginRight: 'auto',
-    top: '180px',
+    top: '220px',
     zIndex: '1000',
     backgroundColor: 'rgba(0,0,0,.6)',
     padding: '5px',
@@ -5889,6 +5889,10 @@ function Home(props) {
     height: '250px'
   }, "padding", '15px');
 
+  var addStyle = {
+    position: 'absolute',
+    top: '-1825px'
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "fixed top-0 right-0 px-6 py-4 sm:block",
@@ -5913,10 +5917,10 @@ function Home(props) {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         style: boxStyle,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-          className: "text-2xl ml-6 mt-6",
+          className: "text-2xl ml-6",
           children: "Search properties for sale"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
-          className: "pl-6 pr-6 h-40 grid grid-cols-3 gap-4 content-center",
+          className: "pl-6 pr-6 h-35 grid grid-cols-3 gap-4 content-center",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "form-group",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
@@ -5977,20 +5981,27 @@ function Home(props) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
               id: "type_error"
             })]
-          })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            className: "w-1/3",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+              type: "submit",
+              className: "btn btn-primary",
+              children: "Search"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {})]
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "grid grid-cols-1 gap-6",
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "relative flex items-top justify-left pl-10 sm:pt-10 min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "gap-6",
         children: [listings.data.length > 0 ? listings.data.map(function (listing) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "bg-white rounded-md p-4",
+            className: "bg-white rounded-sm p-4 shadow-md",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
               src: listing.img_path,
               alt: "Property Image",
-              className: "max-w-md rounded-md mb-2"
+              className: "max-w-3xl rounded-sm mb-2"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
               className: "font-extrabold text-lg mb-2",
               children: listing.title
@@ -6013,7 +6024,14 @@ function Home(props) {
           onChange: getData,
           itemClass: "page-item"
         }, _defineProperty(_jsx2, "itemClass", "page-link"), _defineProperty(_jsx2, "firstPageText", "First"), _defineProperty(_jsx2, "lastPageText", "Last"), _jsx2))]
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "relative flex items-top justify-left pl-10 bg-gray-100 dark:bg-gray-900",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+          src: "url(../../images/fakeAdd.jpg",
+          className: "max-w-sm shadow-sm",
+          style: addStyle
+        })
+      })]
     })]
   });
 }

@@ -29,7 +29,7 @@ export default function Home(props) {
         position: 'relative',
         marginLeft: 'auto',
         marginRight: 'auto',
-        top: '180px',
+        top: '220px',
         zIndex: '1000',
         backgroundColor: 'rgba(0,0,0,.6)',
         padding: '5px',
@@ -38,6 +38,11 @@ export default function Home(props) {
         height: '250px',
         padding: '15px'
     };
+
+    const addStyle = {
+        position: 'absolute',
+        top: '-1825px',
+    }
     
     return (
             <div>
@@ -59,8 +64,8 @@ export default function Home(props) {
                 </div>
                 <header style={headerStyle} className="w-full h-11">
                     <div style={boxStyle}>
-                        <span className="text-2xl ml-6 mt-6">Search properties for sale</span><br/><br/>
-                        <form className="pl-6 pr-6 h-40 grid grid-cols-3 gap-4 content-center">
+                        <span className="text-2xl ml-6">Search properties for sale</span><br/><br/>
+                        <form className="pl-6 pr-6 h-35 grid grid-cols-3 gap-4 content-center">
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlSelect1">Property Type</label>
                                 <select className="form-control" id="type">
@@ -87,15 +92,18 @@ export default function Home(props) {
                                 </select>
                                 <div id="type_error"></div>
                             </div>
+                            <span className="w-1/3"><button type="submit" className="btn btn-primary">Search</button></span>
+                            <span></span>
+                            <span></span>
                         </form>
                     </div>
                 </header>
-                <div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-                    <div className="grid grid-cols-1 gap-6">
+                <div className="relative flex items-top justify-left pl-10 sm:pt-10 min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center">
+                    <div className="gap-6">
                     {listings.data.length > 0 ? (
                         listings.data.map(listing => (    
-                            <div key={listing.id} className="bg-white rounded-md p-4">
-                                <img src={listing.img_path} alt="Property Image" className="max-w-md rounded-md mb-2"/>
+                            <div key={listing.id} className="bg-white rounded-sm p-4 shadow-md">
+                                <img src={listing.img_path} alt="Property Image" className="max-w-3xl rounded-sm mb-2"/>
                                 <span className="font-extrabold text-lg mb-2">{listing.title}</span><br/>
                                 <span className="mr-14">Rooms: {listing.rooms}</span>
                                 <span className="">Size: {listing.area} sqm</span>
@@ -118,7 +126,10 @@ export default function Home(props) {
                             lastPageText="Last"
                         />  
                     </div>
-                </div>
+                    <div className="relative flex items-top justify-left pl-10 bg-gray-100 dark:bg-gray-900">
+                        <img src="url(../../images/fakeAdd.jpg" className="max-w-sm shadow-sm" style={addStyle}/>
+                    </div>
+                </div>         
             </div>  
         )
 }
