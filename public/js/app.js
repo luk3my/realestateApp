@@ -5479,8 +5479,20 @@ function Dashboard(props) {
     if (!formError) {
       axios.post("listings", fData).then(function (response) {
         alert('New Listing Added');
+      })["catch"](function (error) {
+        renderErrors(error.response.data.errors);
       });
     } else return;
+  };
+
+  var renderErrors = function renderErrors(errors) {
+    setErrors(errors);
+    var errorItems = Object.keys(errors).map(function (key, i) {
+      console.log(errors);
+      var err = errors[key][0];
+      removeError("".concat(key, "_error"));
+      renderError(err, "".concat(key, "_error"), "".concat(key, "_spn"));
+    });
   };
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('1'),
@@ -5532,6 +5544,11 @@ function Dashboard(props) {
       _useState20 = _slicedToArray(_useState19, 2),
       img = _useState20[0],
       setImg = _useState20[1];
+
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState22 = _slicedToArray(_useState21, 2),
+      errors = _useState22[0],
+      setErrors = _useState22[1];
 
   var handleTypeChange = function handleTypeChange(e) {
     return setType(e.target.value);

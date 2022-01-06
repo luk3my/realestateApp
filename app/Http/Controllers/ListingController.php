@@ -17,7 +17,19 @@ class ListingController extends Controller
 
     public function store(Request $request, Listing $listing)
     {
-    // Needs validation
+    // validation
+    $request->validate([
+        'type' => ['required'],
+        'suburb' => ['required'],
+        'title' => ['required', 'max:100', 'unique:listings'],
+        'street_address' => ['required', 'max:255'],
+        'area' => ['required', 'max:5000', 'integer'],
+        'rooms' => ['required', 'max:10', 'integer'],
+        'price' => ['required', 'max:10000000', 'integer'],
+        'blurb' => ['required', 'max:255'],
+        'description' => ['required', 'max:255']
+    ]);
+
     if ($request->file('image')) {
         $file = $request->file('image');
         $fileName = $file->getClientOriginalName();

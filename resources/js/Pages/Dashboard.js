@@ -22,9 +22,22 @@ export default function Dashboard(props) {
         if (!formError) {
             axios.post(`listings`, fData).then(response => {
                 alert('New Listing Added');
+            })
+            .catch((error) => {
+                renderErrors(error.response.data.errors)
             });
         } else return;
     }
+
+    const renderErrors = errors => {
+        setErrors(errors);
+        const errorItems = Object.keys(errors).map( (key, i) => {
+            console.log(errors)
+            const err = errors[key][0];
+            removeError(`${key}_error`);
+            renderError(err, `${key}_error`, `${key}_spn`)
+        });
+    };
 
     const [type, setType] = useState('1');
     const [suburb, setSuburb] = useState('1');
@@ -36,6 +49,7 @@ export default function Dashboard(props) {
     const [blurb, setBlurb] = useState('');
     const [desc, setDesc] = useState('');
     const [img, setImg] = useState('');
+    const [errors, setErrors] = useState('');
 
     const handleTypeChange=(e)=> setType(e.target.value);
     const handleSuburbChange=(e)=> setSuburb(e.target.value);
@@ -89,8 +103,6 @@ export default function Dashboard(props) {
                         <div className="p-6 bg-white border-b border-gray-200">
                             <h3>Add a new property listing</h3>
                         </div>
-                    
-
                     <form className="p-6" onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="exampleFormControlSelect1">Property Type</label>
