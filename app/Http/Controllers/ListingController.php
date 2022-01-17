@@ -54,4 +54,8 @@ class ListingController extends Controller
     ]);
     return 'success';
     }
+
+    public function filterIndex() {
+        return Listing::latest()->filter(request(['type']))->paginate(5);
+    }    
 }

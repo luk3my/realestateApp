@@ -19,4 +19,13 @@ class Listing extends Model
     {
         return $this->belongsTo(Suburb::class, 'suburb_id');
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['type'] ?? false, fn($query, $type) =>
+            $query
+                ->whereExists(fn($query) =>
+                    $query->where('listings.type_id', $type))->orderBy('listings.id', 'ASC')
+        );
+    }
 }

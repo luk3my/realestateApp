@@ -40,5 +40,6 @@ require __DIR__.'/auth.php';
 
 // Endpoints
 
-Route::get('listings', [ListingController::class, 'index']);
+Route::post('listingsIndex', [ListingController::class, 'filterIndex']);
 Route::post('listings', [ListingController::class, 'store']);
+// Route::post('listingsFiltered', [ListingController::class, 'filterIndex']);

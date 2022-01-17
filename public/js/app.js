@@ -5876,12 +5876,23 @@ function Home(props) {
       listings = _useState2[0],
       setListings = _useState2[1];
 
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    axios__WEBPACK_IMPORTED_MODULE_2___default().post("listingsIndex?page=".concat('1'), {
+      type: 3
+    }).then(function (response) {
+      setListings(response.data);
+    })["catch"](function (error) {
+      alert(error);
+    });
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     setListings(props.Listings);
   }, [props.Listings]);
 
   var getData = function getData(pageNumber) {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get("listings?page=".concat(pageNumber)).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().post("listingsIndex?page=".concat(pageNumber)).then(function (response) {
       setListings(response.data);
     });
   };
@@ -5938,6 +5949,7 @@ function Home(props) {
           children: "Search properties for sale"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
           className: "pl-6 pr-6 h-35 grid grid-cols-3 gap-4 content-center",
+          onSubmit: handleSubmit,
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "form-group",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {

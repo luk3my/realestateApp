@@ -7,12 +7,25 @@ export default function Home(props) {
   
     const [listings, setListings] = useState({...props.Listings});
 
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        axios.post(`listingsIndex?page=${'1'}`, {
+            type: 3,
+        })
+        .then(response => {
+            setListings(response.data);
+        })
+        .catch((error) => {
+            alert(error)
+        });
+    }
+
     useEffect(() => {
       setListings(props.Listings);
     }, [props.Listings])
 
     const getData=(pageNumber)=>{
-        axios.get(`listings?page=${pageNumber}`).then(response => {
+        axios.post(`listingsIndex?page=${pageNumber}`).then(response => {
           setListings(response.data);
         });
     }
@@ -22,7 +35,6 @@ export default function Home(props) {
         height: '700px',
         backgroundImage: `url(../../images/headerImg.jpg)`,
         backgroundSize: 'cover',
-   
     };
 
     const boxStyle = {
@@ -65,7 +77,7 @@ export default function Home(props) {
                 <header style={headerStyle} className="w-full h-11">
                     <div style={boxStyle}>
                         <span className="text-2xl ml-6">Search properties for sale</span><br/><br/>
-                        <form className="pl-6 pr-6 h-35 grid grid-cols-3 gap-4 content-center">
+                        <form className="pl-6 pr-6 h-35 grid grid-cols-3 gap-4 content-center" onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlSelect1">Property Type</label>
                                 <select className="form-control" id="type">
