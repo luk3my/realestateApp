@@ -5881,14 +5881,24 @@ function Home(props) {
       typeVal = _useState4[0],
       setType = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      suburbval = _useState6[0],
+      setSuburb = _useState6[1];
+
   var handleTypeChange = function handleTypeChange(e) {
     return setType(e.target.value);
+  };
+
+  var handleSuburbChange = function handleSuburbChange(e) {
+    return setSuburb(e.target.value);
   };
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     axios__WEBPACK_IMPORTED_MODULE_2___default().post("listingsIndex?page=".concat('1'), {
-      type: typeVal
+      type: typeVal,
+      suburb: suburbval
     }).then(function (response) {
       setListings(response.data);
     })["catch"](function (error) {
@@ -5902,7 +5912,8 @@ function Home(props) {
 
   var getData = function getData(pageNumber) {
     axios__WEBPACK_IMPORTED_MODULE_2___default().post("listingsIndex?page=".concat(pageNumber), {
-      type: typeVal
+      type: typeVal,
+      suburb: suburbval
     }).then(function (response) {
       setListings(response.data);
     });
@@ -5991,6 +6002,7 @@ function Home(props) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
               className: "form-control",
               id: "suburb",
+              onChange: handleSuburbChange,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
                 value: "1",
                 children: "Wellington Point"

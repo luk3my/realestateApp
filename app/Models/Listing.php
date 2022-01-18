@@ -22,10 +22,15 @@ class Listing extends Model
 
     public function scopeFilter($query, array $filters)
     {
-        $query->when($filters['type'] ?? false, fn($query, $type) =>
+        $query->when($filters['type'] ?? false, fn($query, $type_id) =>
             $query
                 ->whereExists(fn($query) =>
-                    $query->where('listings.type_id', $type))
+                    $query->where('listings.type_id', $type_id))
+        );
+         $query->when($filters['suburb'] ?? false, fn($query, $suburb_id) =>
+            $query
+                ->whereExists(fn($query) =>
+                    $query->where('listings.suburb_id', $suburb_id))
         );
     }
 }

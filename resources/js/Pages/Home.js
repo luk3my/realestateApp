@@ -7,13 +7,16 @@ export default function Home(props) {
   
     const [listings, setListings] = useState({...props.Listings});
     const [typeVal, setType] = useState('');
+    const [suburbval, setSuburb] = useState('');
 
     const handleTypeChange=(e)=> setType(e.target.value);
+    const handleSuburbChange=(e)=> setSuburb(e.target.value);
 
     const handleSubmit=(e)=>{
         e.preventDefault();
         axios.post(`listingsIndex?page=${'1'}`, {
-            type: typeVal
+            type: typeVal,
+            suburb: suburbval
         })
         .then(response => {
             setListings(response.data);
@@ -29,7 +32,8 @@ export default function Home(props) {
 
     const getData=(pageNumber)=>{
         axios.post(`listingsIndex?page=${pageNumber}`, {
-            type: typeVal
+            type: typeVal,
+            suburb: suburbval
         }).then(response => {
           setListings(response.data);
         });
@@ -94,7 +98,7 @@ export default function Home(props) {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlSelect1">Suburb</label>
-                                <select className="form-control" id="suburb">
+                                <select className="form-control" id="suburb" onChange={handleSuburbChange}>
                                     <option value="1">Wellington Point</option>
                                     <option value="2">Birkdale</option>
                                     <option value="3">Cleveland</option>

@@ -56,6 +56,6 @@ class ListingController extends Controller
     }
 
     public function filterIndex() {
-        return Listing::filter(request(['type']))->paginate(5);
+        return Listing::filter(request(['type', 'suburb']))->paginate(5);
     }    
 }
