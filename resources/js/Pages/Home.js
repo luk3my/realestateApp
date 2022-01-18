@@ -6,11 +6,14 @@ import Pagination from 'react-js-pagination';
 export default function Home(props) {
   
     const [listings, setListings] = useState({...props.Listings});
+    const [typeVal, setType] = useState('');
+
+    const handleTypeChange=(e)=> setType(e.target.value);
 
     const handleSubmit=(e)=>{
         e.preventDefault();
         axios.post(`listingsIndex?page=${'1'}`, {
-            type: 3,
+            type: typeVal
         })
         .then(response => {
             setListings(response.data);
@@ -25,7 +28,9 @@ export default function Home(props) {
     }, [props.Listings])
 
     const getData=(pageNumber)=>{
-        axios.post(`listingsIndex?page=${pageNumber}`).then(response => {
+        axios.post(`listingsIndex?page=${pageNumber}`, {
+            type: typeVal
+        }).then(response => {
           setListings(response.data);
         });
     }
@@ -80,7 +85,7 @@ export default function Home(props) {
                         <form className="pl-6 pr-6 h-35 grid grid-cols-3 gap-4 content-center" onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlSelect1">Property Type</label>
-                                <select className="form-control" id="type">
+                                <select className="form-control" id="type" onChange={handleTypeChange}>
                                     <option value="1">House</option>
                                     <option value="2">Townhouse</option>
                                     <option value="3">Appartment</option>

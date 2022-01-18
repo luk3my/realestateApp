@@ -5876,10 +5876,19 @@ function Home(props) {
       listings = _useState2[0],
       setListings = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      typeVal = _useState4[0],
+      setType = _useState4[1];
+
+  var handleTypeChange = function handleTypeChange(e) {
+    return setType(e.target.value);
+  };
+
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     axios__WEBPACK_IMPORTED_MODULE_2___default().post("listingsIndex?page=".concat('1'), {
-      type: 3
+      type: typeVal
     }).then(function (response) {
       setListings(response.data);
     })["catch"](function (error) {
@@ -5892,7 +5901,9 @@ function Home(props) {
   }, [props.Listings]);
 
   var getData = function getData(pageNumber) {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().post("listingsIndex?page=".concat(pageNumber)).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().post("listingsIndex?page=".concat(pageNumber), {
+      type: typeVal
+    }).then(function (response) {
       setListings(response.data);
     });
   };
@@ -5958,6 +5969,7 @@ function Home(props) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
               className: "form-control",
               id: "type",
+              onChange: handleTypeChange,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
                 value: "1",
                 children: "House"
