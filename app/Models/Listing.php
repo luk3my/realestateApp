@@ -25,7 +25,7 @@ class Listing extends Model
         $query->when($filters['type'] ?? false, fn($query, $type) =>
             $query
                 ->whereExists(fn($query) =>
-                    $query->where('listings.type_id', $type))->orderBy('listings.id', 'ASC')
+                    $query->where('listings.type_id', $type))
         );
     }
 }
