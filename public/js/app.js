@@ -5883,8 +5883,13 @@ function Home(props) {
 
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState6 = _slicedToArray(_useState5, 2),
-      suburbval = _useState6[0],
+      suburbVal = _useState6[0],
       setSuburb = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      priceVal = _useState8[0],
+      setPrice = _useState8[1];
 
   var handleTypeChange = function handleTypeChange(e) {
     return setType(e.target.value);
@@ -5894,11 +5899,16 @@ function Home(props) {
     return setSuburb(e.target.value);
   };
 
+  var handlePriceChange = function handlePriceChange(e) {
+    return setPrice(e.target.value);
+  };
+
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     axios__WEBPACK_IMPORTED_MODULE_2___default().post("listingsIndex?page=".concat('1'), {
       type: typeVal,
-      suburb: suburbval
+      suburb: suburbVal,
+      price: priceVal
     }).then(function (response) {
       setListings(response.data);
     })["catch"](function (error) {
@@ -5913,7 +5923,8 @@ function Home(props) {
   var getData = function getData(pageNumber) {
     axios__WEBPACK_IMPORTED_MODULE_2___default().post("listingsIndex?page=".concat(pageNumber), {
       type: typeVal,
-      suburb: suburbval
+      suburb: suburbVal,
+      price: priceVal
     }).then(function (response) {
       setListings(response.data);
     });
@@ -5982,6 +5993,11 @@ function Home(props) {
               id: "type",
               onChange: handleTypeChange,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "",
+                disabled: true,
+                selected: true,
+                children: "Select Type"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
                 value: "1",
                 children: "House"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
@@ -6004,6 +6020,11 @@ function Home(props) {
               id: "suburb",
               onChange: handleSuburbChange,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "",
+                disabled: true,
+                selected: true,
+                children: "Select Suburb"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
                 value: "1",
                 children: "Wellington Point"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
@@ -6024,11 +6045,17 @@ function Home(props) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
               className: "form-control",
               id: "price",
+              onChange: handlePriceChange,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                value: "1",
+                value: "",
+                disabled: true,
+                selected: true,
+                children: "Select Range"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "<",
                 children: "< 500k"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                value: "2",
+                value: ">",
                 children: "> 500k"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -6068,7 +6095,7 @@ function Home(props) {
           }, listing.id);
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "col-span-4 lg:text-center lg:pt-14 mb-10",
-          children: "There are no tasks to show"
+          children: "There are no Listings to show..."
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_js_pagination__WEBPACK_IMPORTED_MODULE_3__["default"], (_jsx2 = {
           activePage: listings.current_page,
           itemsCountPerPage: listings.per_page,

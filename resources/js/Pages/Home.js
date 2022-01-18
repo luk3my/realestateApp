@@ -7,16 +7,19 @@ export default function Home(props) {
   
     const [listings, setListings] = useState({...props.Listings});
     const [typeVal, setType] = useState('');
-    const [suburbval, setSuburb] = useState('');
+    const [suburbVal, setSuburb] = useState('');
+    const [priceVal, setPrice] = useState('');
 
     const handleTypeChange=(e)=> setType(e.target.value);
     const handleSuburbChange=(e)=> setSuburb(e.target.value);
-
+    const handlePriceChange=(e)=> setPrice(e.target.value);
+  
     const handleSubmit=(e)=>{
         e.preventDefault();
         axios.post(`listingsIndex?page=${'1'}`, {
             type: typeVal,
-            suburb: suburbval
+            suburb: suburbVal,
+            price: priceVal
         })
         .then(response => {
             setListings(response.data);
@@ -33,7 +36,8 @@ export default function Home(props) {
     const getData=(pageNumber)=>{
         axios.post(`listingsIndex?page=${pageNumber}`, {
             type: typeVal,
-            suburb: suburbval
+            suburb: suburbVal,
+            price: priceVal
         }).then(response => {
           setListings(response.data);
         });
@@ -90,6 +94,7 @@ export default function Home(props) {
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlSelect1">Property Type</label>
                                 <select className="form-control" id="type" onChange={handleTypeChange}>
+                                    <option value="" disabled selected>Select Type</option>
                                     <option value="1">House</option>
                                     <option value="2">Townhouse</option>
                                     <option value="3">Appartment</option>
@@ -99,6 +104,7 @@ export default function Home(props) {
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlSelect1">Suburb</label>
                                 <select className="form-control" id="suburb" onChange={handleSuburbChange}>
+                                    <option value="" disabled selected>Select Suburb</option>
                                     <option value="1">Wellington Point</option>
                                     <option value="2">Birkdale</option>
                                     <option value="3">Cleveland</option>
@@ -107,9 +113,10 @@ export default function Home(props) {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlSelect1">Price</label>
-                                <select className="form-control" id="price">
-                                    <option value="1">&lt; 500k</option>
-                                    <option value="2">&gt; 500k</option>
+                                <select className="form-control" id="price" onChange={handlePriceChange}>
+                                    <option value="" disabled selected>Select Range</option>
+                                    <option value="<">&lt; 500k</option>
+                                    <option value=">">&gt; 500k</option>
                                 </select>
                                 <div id="type_error"></div>
                             </div>
@@ -132,7 +139,7 @@ export default function Home(props) {
                     ))
                         ) : (
                             <div className="col-span-4 lg:text-center lg:pt-14 mb-10">
-                            There are no tasks to show
+                            There are no Listings to show...
                             </div>
                     )}     
                         <Pagination
