@@ -65,8 +65,22 @@ export default function Home(props) {
     };
 
     const addStyle = {
-        position: 'absolute',
-        top: '-1825px',
+        width:'auto',
+        height:'100vh',
+        position: '-webkit-sticky', /* Safari */
+        position: 'sticky',
+        top: '0',
+        right: '0',
+        zIndex: '99999' 
+    }
+
+    const tile = {
+        minWidth: '75%',
+        marginBottom: '20px'
+    }
+
+    const pag = {
+        marginTop: '20px'
     }
     
     return (
@@ -126,12 +140,12 @@ export default function Home(props) {
                         </form>
                     </div>
                 </header>
-                <div className="relative flex items-top justify-left pl-10 sm:pt-10 min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center">
+                <div className="relative flex items-top justify-left pl-10 pt-10 bg-gray-100 dark:bg-gray-900 w-full">
                     <div className="gap-6">
                     {listings.data.length > 0 ? (
                         listings.data.map(listing => (    
-                            <div key={listing.id} className="bg-white rounded-sm p-4 shadow-md">
-                                <img src={listing.img_path} alt="Property Image" className="max-w-3xl rounded-sm mb-2"/>
+                            <div key={listing.id} className="bg-white rounded-sm p-4 shadow-md w-5/6" style={tile}>
+                                <img src={listing.img_path} alt="Property Image" className="rounded-sm object-cover h-3/6 w-400px"/>
                                 <span className="font-extrabold text-lg mb-2">{listing.title}</span><br/>
                                 <span className="mr-14">Rooms: {listing.rooms}</span>
                                 <span className="">Size: {listing.area} sqm</span>
@@ -142,7 +156,8 @@ export default function Home(props) {
                             There are no Listings to show...
                             </div>
                     )}     
-                        <Pagination
+                    <div style={pag}>
+                        <Pagination      
                             activePage={listings.current_page}
                             itemsCountPerPage={listings.per_page}
                             totalItemsCount={listings.total}
@@ -152,12 +167,14 @@ export default function Home(props) {
                             itemClass="page-link"
                             firstPageText="First"
                             lastPageText="Last"
-                        />  
-                    </div>
-                    <div className="relative flex items-top justify-left pl-10 bg-gray-100 dark:bg-gray-900">
-                        <img src="url(../../images/fakeAdd.jpg" className="max-w-sm shadow-sm" style={addStyle}/>
-                    </div>
-                </div>         
+                        />
+                    </div>  
+                    </div> 
+                    <div style={addStyle} className="pr-4">
+                    <img src="url(../../images/fakeAdd.jpg" className="max-w-sm shadow-sm"/>
+                </div>   
+                </div>  
+               
             </div>  
         )
 }

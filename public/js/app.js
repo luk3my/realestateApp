@@ -5869,7 +5869,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Home(props) {
-  var _jsx2;
+  var _addStyle, _jsx2;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_objectSpread({}, props.Listings)),
       _useState2 = _slicedToArray(_useState, 2),
@@ -5950,9 +5950,17 @@ function Home(props) {
     height: '250px'
   }, "padding", '15px');
 
-  var addStyle = {
-    position: 'absolute',
-    top: '-1825px'
+  var addStyle = (_addStyle = {
+    width: 'auto',
+    height: '100vh',
+    position: '-webkit-sticky'
+  }, _defineProperty(_addStyle, "position", 'sticky'), _defineProperty(_addStyle, "top", '0'), _defineProperty(_addStyle, "right", '0'), _defineProperty(_addStyle, "zIndex", '99999'), _addStyle);
+  var tile = {
+    minWidth: '75%',
+    marginBottom: '20px'
+  };
+  var pag = {
+    marginTop: '20px'
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -6072,16 +6080,17 @@ function Home(props) {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "relative flex items-top justify-left pl-10 sm:pt-10 min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center",
+      className: "relative flex items-top justify-left pl-10 pt-10 bg-gray-100 dark:bg-gray-900 w-full",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "gap-6",
         children: [listings.data.length > 0 ? listings.data.map(function (listing) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "bg-white rounded-sm p-4 shadow-md",
+            className: "bg-white rounded-sm p-4 shadow-md w-5/6",
+            style: tile,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
               src: listing.img_path,
               alt: "Property Image",
-              className: "max-w-3xl rounded-sm mb-2"
+              className: "rounded-sm object-cover h-3/6 w-400px"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
               className: "font-extrabold text-lg mb-2",
               children: listing.title
@@ -6096,20 +6105,23 @@ function Home(props) {
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "col-span-4 lg:text-center lg:pt-14 mb-10",
           children: "There are no Listings to show..."
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_js_pagination__WEBPACK_IMPORTED_MODULE_3__["default"], (_jsx2 = {
-          activePage: listings.current_page,
-          itemsCountPerPage: listings.per_page,
-          totalItemsCount: listings.total,
-          pageRangeDisplayed: listings.per_page,
-          onChange: getData,
-          itemClass: "page-item"
-        }, _defineProperty(_jsx2, "itemClass", "page-link"), _defineProperty(_jsx2, "firstPageText", "First"), _defineProperty(_jsx2, "lastPageText", "Last"), _jsx2))]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          style: pag,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_js_pagination__WEBPACK_IMPORTED_MODULE_3__["default"], (_jsx2 = {
+            activePage: listings.current_page,
+            itemsCountPerPage: listings.per_page,
+            totalItemsCount: listings.total,
+            pageRangeDisplayed: listings.per_page,
+            onChange: getData,
+            itemClass: "page-item"
+          }, _defineProperty(_jsx2, "itemClass", "page-link"), _defineProperty(_jsx2, "firstPageText", "First"), _defineProperty(_jsx2, "lastPageText", "Last"), _jsx2))
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "relative flex items-top justify-left pl-10 bg-gray-100 dark:bg-gray-900",
+        style: addStyle,
+        className: "pr-4",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
           src: "url(../../images/fakeAdd.jpg",
-          className: "max-w-sm shadow-sm",
-          style: addStyle
+          className: "max-w-sm shadow-sm"
         })
       })]
     })]
