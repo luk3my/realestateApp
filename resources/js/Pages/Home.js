@@ -169,10 +169,12 @@ export default function Home(props) {
                             lastPageText="Last"
                         />
                     </div>  
-                    </div> 
+                    </div>
+                    { listings.data.length > 0 &&
                     <div style={addStyle} className="pr-4">
-                    <img src="url(../../images/fakeAdd.jpg" className="max-w-sm shadow-sm"/>
-                </div>   
+                        <img src="url(../../images/fakeAdd.jpg" className="max-w-sm shadow-sm"/>
+                    </div>   
+                    }
                 </div>  
                
             </div>  
