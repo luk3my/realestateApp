@@ -110,6 +110,14 @@ export default function Home(props) {
         marginTop: '20px'
     }
 
+    const caps = str => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    const numCommas = x => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     return (
             <div>
                 <div className="fixed top-0 right-0 px-6 py-4 sm:block">
@@ -181,7 +189,9 @@ export default function Home(props) {
                         listings.data.map(listing => (    
                             <div key={listing.id} className="bg-white rounded-sm p-4 shadow-md w-5/6" style={tile}>
                                 <img src={listing.img_path} alt="Property Image" className="rounded-sm object-cover h-3/6 w-400px"/>
-                                <span className="font-extrabold text-lg mb-2">{listing.title}</span><br/>
+                                <span className="font-extrabold text-xl mb-2">{listing.title}</span><br/>
+                                <span className="font-bold text-l mb-2">{caps(listing.type)} | {caps(listing.suburb)}</span><br />
+                                <span className="mr-14">Offers Above: <span className="font-semibold">${numCommas(listing.price)}</span></span>
                                 <span className="mr-14">Rooms: {listing.rooms}</span>
                                 <span className="">Size: {listing.area} sqm</span>
                             </div>

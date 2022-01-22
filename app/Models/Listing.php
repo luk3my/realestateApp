@@ -27,12 +27,12 @@ class Listing extends Model
                 ->whereExists(fn($query) =>
                     $query->where('listings.type_id', $type_id))
         );
-         $query->when($filters['suburb'] ?? false, fn($query, $suburb_id) =>
+        $query->when($filters['suburb'] ?? false, fn($query, $suburb_id) =>
             $query
                 ->whereExists(fn($query) =>
                     $query->where('listings.suburb_id', $suburb_id))
         );
-         $query->when($filters['price'] ?? false, fn($query, $limit) =>
+        $query->when($filters['price'] ?? false, fn($query, $limit) =>
             $query
                 ->whereExists(fn($query) =>
                     $query->where('listings.price', $limit, 500000))

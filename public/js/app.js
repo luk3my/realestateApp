@@ -5996,6 +5996,15 @@ function Home(props) {
   var pag = {
     marginTop: '20px'
   };
+
+  var caps = function caps(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
+  var numCommas = function numCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "fixed top-0 right-0 px-6 py-4 sm:block",
@@ -6155,9 +6164,18 @@ function Home(props) {
               alt: "Property Image",
               className: "rounded-sm object-cover h-3/6 w-400px"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-              className: "font-extrabold text-lg mb-2",
+              className: "font-extrabold text-xl mb-2",
               children: listing.title
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+              className: "font-bold text-l mb-2",
+              children: [caps(listing.type), " | ", caps(listing.suburb)]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+              className: "mr-14",
+              children: ["Offers Above: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+                className: "font-semibold",
+                children: ["$", numCommas(listing.price)]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
               className: "mr-14",
               children: ["Rooms: ", listing.rooms]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {

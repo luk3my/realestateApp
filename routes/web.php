@@ -29,7 +29,11 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
-        'Listings' => DB::table('Listings')->paginate(5),
+        'Listings' => DB::table('Listings') 
+                        ->join('types', 'types.id', 'listings.type_id')
+                        ->join('suburbs', 'suburbs.id', 'listings.suburb_id')
+                        ->select('listings.*','types.name as type', 'suburbs.name as suburb')
+                        ->paginate(5),
         'Types' => Type::all(),
         'Suburbs' => Suburb::all(),
 

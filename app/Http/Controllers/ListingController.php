@@ -7,6 +7,8 @@ use App\Models\Listing;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\DB;
+
 
 class ListingController extends Controller
 {
@@ -56,6 +58,11 @@ class ListingController extends Controller
     }
 
     public function filterIndex() {
-        return Listing::filter(request(['type', 'suburb', 'price']))->paginate(5);
+
+        return Listing::join('types', 'types.id', 'listings.type_id')
+            ->join('suburbs', 'suburbs.id', 'listings.suburb_id')
+            ->select('listings.*','types.name as type', 'suburbs.name as suburb')
+            ->filter(request(['type', 'suburb', 'price']))
+            ->paginate(5);
     }    
 }
