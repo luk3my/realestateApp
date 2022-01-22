@@ -5876,20 +5876,30 @@ function Home(props) {
       listings = _useState2[0],
       setListings = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_objectSpread({}, props.Types)),
       _useState4 = _slicedToArray(_useState3, 2),
-      typeVal = _useState4[0],
-      setType = _useState4[1];
+      types = _useState4[0],
+      setTypes = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_objectSpread({}, props.Suburbs)),
       _useState6 = _slicedToArray(_useState5, 2),
-      suburbVal = _useState6[0],
-      setSuburb = _useState6[1];
+      suburbs = _useState6[0],
+      setSuburbs = _useState6[1];
 
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState8 = _slicedToArray(_useState7, 2),
-      priceVal = _useState8[0],
-      setPrice = _useState8[1];
+      typeVal = _useState8[0],
+      setType = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState10 = _slicedToArray(_useState9, 2),
+      suburbVal = _useState10[0],
+      setSuburb = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState12 = _slicedToArray(_useState11, 2),
+      priceVal = _useState12[0],
+      setPrice = _useState12[1];
 
   var handleTypeChange = function handleTypeChange(e) {
     return setType(e.target.value);
@@ -5903,6 +5913,26 @@ function Home(props) {
     return setPrice(e.target.value);
   };
 
+  var resetList = function resetList(e) {
+    e.stopPropagation();
+    setType('');
+    setSuburb('');
+    setPrice('');
+    console.log(typeVal); // Hooks won't update in time to use getData (takes 2 clicks) - this is a hack 
+
+    axios__WEBPACK_IMPORTED_MODULE_2___default().post("listingsIndex?page=".concat('1'), {
+      type: '',
+      suburb: '',
+      price: ''
+    }).then(function (response) {
+      setListings(response.data);
+    });
+    var select = document.querySelectorAll(".select");
+    Array.prototype.slice.call(select).forEach(function (item) {
+      item.firstChild.selected = true;
+    });
+  };
+
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     axios__WEBPACK_IMPORTED_MODULE_2___default().post("listingsIndex?page=".concat('1'), {
@@ -5914,11 +5944,15 @@ function Home(props) {
     })["catch"](function (error) {
       alert(error);
     });
-  };
+  }; // Casts to array
+
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setListings(props.Listings);
-  }, [props.Listings]);
+    setTypes(props.Types);
+  }, [props.Types]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setSuburbs(props.Suburbs);
+  }, [props.Suburbs]);
 
   var getData = function getData(pageNumber) {
     axios__WEBPACK_IMPORTED_MODULE_2___default().post("listingsIndex?page=".concat(pageNumber), {
@@ -5988,6 +6022,36 @@ function Home(props) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
           className: "text-2xl ml-6",
           children: "Search properties for sale"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+          className: "float-right cursor-pointer",
+          onClick: resetList,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("svg", {
+            "class": "h-6 w-6 fill-white",
+            width: "24",
+            height: "24",
+            viewBox: "0 0 24 24",
+            "stroke-width": "2",
+            stroke: "currentColor",
+            fill: "none",
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round",
+            children: ["  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+              stroke: "none",
+              d: "M0 0h24v24H0z"
+            }), "  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("circle", {
+              cx: "5",
+              cy: "18",
+              r: "2"
+            }), "  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("circle", {
+              cx: "19",
+              cy: "6",
+              r: "2"
+            }), "  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+              d: "M19 8v5a5 5 0 0 1 -5 5h-3l3 -3m0 6l-3 -3"
+            }), "  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("path", {
+              d: "M5 16v-5a5 5 0 0 1 5 -5h3l-3 -3m0 6l3 -3"
+            })]
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
           className: "pl-6 pr-6 h-35 grid grid-cols-3 gap-4 content-center",
           onSubmit: handleSubmit,
@@ -5997,23 +6061,23 @@ function Home(props) {
               htmlFor: "exampleFormControlSelect1",
               children: "Property Type"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
-              className: "form-control",
+              className: "form-control select",
               id: "type",
               onChange: handleTypeChange,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
                 value: "",
+                selected: true,
+                children: "All"
+              }), types.length > 0 ? types.map(function (type) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                  value: type.id,
+                  children: type.name
+                });
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "",
                 disabled: true,
                 selected: true,
-                children: "Select Type"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                value: "1",
-                children: "House"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                value: "2",
-                children: "Townhouse"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                value: "3",
-                children: "Appartment"
+                children: "There are no options to show"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
               id: "type_error"
@@ -6024,23 +6088,23 @@ function Home(props) {
               htmlFor: "exampleFormControlSelect1",
               children: "Suburb"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
-              className: "form-control",
+              className: "form-control select",
               id: "suburb",
               onChange: handleSuburbChange,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
                 value: "",
+                selected: true,
+                children: "All"
+              }), suburbs.length > 0 ? suburbs.map(function (suburb) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                  value: suburb.id,
+                  children: suburb.name
+                });
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "",
                 disabled: true,
                 selected: true,
-                children: "Select Suburb"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                value: "1",
-                children: "Wellington Point"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                value: "2",
-                children: "Birkdale"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                value: "3",
-                children: "Cleveland"
+                children: "There are no options to show"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
               id: "type_error"
@@ -6051,14 +6115,13 @@ function Home(props) {
               htmlFor: "exampleFormControlSelect1",
               children: "Price"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
-              className: "form-control",
+              className: "form-control select",
               id: "price",
               onChange: handlePriceChange,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
                 value: "",
-                disabled: true,
                 selected: true,
-                children: "Select Range"
+                children: "All"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
                 value: "<",
                 children: "< 500k"
@@ -6080,7 +6143,7 @@ function Home(props) {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "relative flex items-top justify-left pl-10 pt-10 bg-gray-100 dark:bg-gray-900 w-full",
+      className: "relative flex items-top justify-center pl-10 pt-10 bg-gray-100 dark:bg-gray-900 w-full",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "gap-6",
         children: [listings.data.length > 0 ? listings.data.map(function (listing) {

@@ -4,8 +4,9 @@ import axios from 'axios';
 import Pagination from 'react-js-pagination';
 
 export default function Home(props) {
-  
     const [listings, setListings] = useState({...props.Listings});
+    const [types, setTypes] = useState({...props.Types});
+    const [suburbs, setSuburbs] = useState({...props.Suburbs});
     const [typeVal, setType] = useState('');
     const [suburbVal, setSuburb] = useState('');
     const [priceVal, setPrice] = useState('');
@@ -13,6 +14,27 @@ export default function Home(props) {
     const handleTypeChange=(e)=> setType(e.target.value);
     const handleSuburbChange=(e)=> setSuburb(e.target.value);
     const handlePriceChange=(e)=> setPrice(e.target.value);
+
+    const resetList=(e)=> {
+        e.stopPropagation();    
+        setType('');
+        setSuburb('');
+        setPrice('');
+        console.log(typeVal)
+        // Hooks won't update in time to use getData (takes 2 clicks) - this is a hack 
+        axios.post(`listingsIndex?page=${'1'}`, {
+            type: '',
+            suburb: '',
+            price: ''
+        })
+        .then(response => {
+            setListings(response.data);
+        })
+        const select = document.querySelectorAll(".select");
+        Array.prototype.slice.call(select).forEach(item =>{
+            item.firstChild.selected = true;
+        })
+    }
   
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -29,9 +51,14 @@ export default function Home(props) {
         });
     }
 
+    // Casts to array
     useEffect(() => {
-      setListings(props.Listings);
-    }, [props.Listings])
+        setTypes(props.Types);
+    }, [props.Types]);
+
+    useEffect(() => {
+        setSuburbs(props.Suburbs);
+    }, [props.Suburbs]);
 
     const getData=(pageNumber)=>{
         axios.post(`listingsIndex?page=${pageNumber}`, {
@@ -39,7 +66,7 @@ export default function Home(props) {
             suburb: suburbVal,
             price: priceVal
         }).then(response => {
-          setListings(response.data);
+            setListings(response.data);
         });
     }
 
@@ -82,7 +109,7 @@ export default function Home(props) {
     const pag = {
         marginTop: '20px'
     }
-    
+
     return (
             <div>
                 <div className="fixed top-0 right-0 px-6 py-4 sm:block">
@@ -103,32 +130,40 @@ export default function Home(props) {
                 </div>
                 <header style={headerStyle} className="w-full h-11">
                     <div style={boxStyle}>
-                        <span className="text-2xl ml-6">Search properties for sale</span><br/><br/>
+                        <span className="text-2xl ml-6">Search properties for sale</span><span className="float-right cursor-pointer" onClick={resetList}><svg class="h-6 w-6 fill-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="5" cy="18" r="2" />  <circle cx="19" cy="6" r="2" />  <path d="M19 8v5a5 5 0 0 1 -5 5h-3l3 -3m0 6l-3 -3" />  <path d="M5 16v-5a5 5 0 0 1 5 -5h3l-3 -3m0 6l3 -3" /></svg></span><br/><br/>
                         <form className="pl-6 pr-6 h-35 grid grid-cols-3 gap-4 content-center" onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlSelect1">Property Type</label>
-                                <select className="form-control" id="type" onChange={handleTypeChange}>
-                                    <option value="" disabled selected>Select Type</option>
-                                    <option value="1">House</option>
-                                    <option value="2">Townhouse</option>
-                                    <option value="3">Appartment</option>
+                                <select className="form-control select" id="type" onChange={handleTypeChange}>
+                                    <option value="" selected>All</option>
+                                     {types.length > 0 ? (
+                                        types.map(type => (    
+                                            <option value={type.id}>{type.name}</option>
+                                     ))
+                                ) : (
+                                     <option value="" disabled selected>There are no options to show</option>
+                                )} 
                                 </select>
                                 <div id="type_error"></div>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlSelect1">Suburb</label>
-                                <select className="form-control" id="suburb" onChange={handleSuburbChange}>
-                                    <option value="" disabled selected>Select Suburb</option>
-                                    <option value="1">Wellington Point</option>
-                                    <option value="2">Birkdale</option>
-                                    <option value="3">Cleveland</option>
+                                <select className="form-control select" id="suburb" onChange={handleSuburbChange}>
+                                    <option value="" selected>All</option>
+                                   {suburbs.length > 0 ? (
+                                        suburbs.map(suburb => (    
+                                            <option value={suburb.id}>{suburb.name}</option>
+                                     ))
+                                ) : (
+                                     <option value="" disabled selected>There are no options to show</option>
+                                )} 
                                 </select>
                                 <div id="type_error"></div>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlSelect1">Price</label>
-                                <select className="form-control" id="price" onChange={handlePriceChange}>
-                                    <option value="" disabled selected>Select Range</option>
+                                <select className="form-control select" id="price" onChange={handlePriceChange}>
+                                    <option value="" selected>All</option>
                                     <option value="<">&lt; 500k</option>
                                     <option value=">">&gt; 500k</option>
                                 </select>
@@ -140,7 +175,7 @@ export default function Home(props) {
                         </form>
                     </div>
                 </header>
-                <div className="relative flex items-top justify-left pl-10 pt-10 bg-gray-100 dark:bg-gray-900 w-full">
+                <div className="relative flex items-top justify-center pl-10 pt-10 bg-gray-100 dark:bg-gray-900 w-full">
                     <div className="gap-6">
                     {listings.data.length > 0 ? (
                         listings.data.map(listing => (    
@@ -162,7 +197,7 @@ export default function Home(props) {
                             itemsCountPerPage={listings.per_page}
                             totalItemsCount={listings.total}
                             pageRangeDisplayed={listings.per_page}
-                            onChange={getData}
+                            onChange={getData}  
                             itemClass="page-item"
                             itemClass="page-link"
                             firstPageText="First"
