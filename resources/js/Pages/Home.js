@@ -110,6 +110,11 @@ export default function Home(props) {
         marginTop: '20px'
     }
 
+    const links = {
+        color: '#B8B8B8',
+        borderColor: '#B8B8B8'
+    }
+
     const caps = str => {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
@@ -120,17 +125,17 @@ export default function Home(props) {
 
     return (
             <div>
-                <div className="fixed top-0 right-0 px-6 py-4 sm:block">
+                <div className="absolute top-0 right-0 px-6 py-4 sm:block">
                     {props.auth.user ? (
-                        <Link href={route('dashboard')} className="text-sm text-gray-700 underline">
+                        <Link style={links} href={route('dashboard')} className="hover:bg-gray-100 text-black-800 font-semibold py-1 px-2 border border-gray-400 shadow">
                             Dashboard
                         </Link>
                     ) : (
                         <div>
-                            <Link href={route('login')} className="text-sm text-gray-700 underline">
+                            <Link style={links} className="hover:bg-gray-100 text-black-800 font-semibold py-1 px-2 border border-gray-400 shadow mr-2" href={route('login')}>
                                 Log in
                             </Link>
-                            <Link href={route('register')} className="ml-4 text-sm text-gray-700 underline">
+                            <Link style={links} href={route('register')} className="hover:bg-gray-100 text-black-800 font-semibold py-1 px-2 border border-gray-400 shadow">
                                 Register
                             </Link>
                         </div>
