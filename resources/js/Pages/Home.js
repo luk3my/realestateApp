@@ -229,8 +229,8 @@ export default function Home(props) {
                     </div>  
                     </div>
                     { listings.data.length > 0 &&
-                    <div style={addStyle} className="pr-4">
-                        <img src="url(../../images/fakeAdd.jpg" className="max-w-sm shadow-sm"/>
+                    <div style={addStyle} className="pr-6">
+                        <img src="url(../../images/fakeAdd.jpg" className="shadow-sm"/>
                     </div>   
                     }
                 </div>  

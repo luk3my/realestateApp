@@ -6199,10 +6199,10 @@ function Home(props) {
         })]
       }), listings.data.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         style: addStyle,
-        className: "pr-4",
+        className: "pr-6",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
           src: "url(../../images/fakeAdd.jpg",
-          className: "max-w-sm shadow-sm"
+          className: "shadow-sm"
         })
       })]
     })]
