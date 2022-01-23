@@ -33,7 +33,9 @@
         "tailwindcss": "^2.1.2"
     },
     "dependencies": {
+        "moment": "^2.29.1",
         "react-bootstrap": "^2.0.3",
-        "react-js-pagination": "^3.0.3"
+        "react-js-pagination": "^3.0.3",
+        "react-moment": "^1.1.1"
     }
 }

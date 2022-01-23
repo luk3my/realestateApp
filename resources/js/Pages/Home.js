@@ -195,8 +195,9 @@ export default function Home(props) {
                                     rooms={listing.rooms}
                                     suburb={caps(listing.suburb)}
                                     type={caps(listing.type)}
-                                    description={listing.description}
-                                    blurb={listing.blurb}>
+                                    description={caps(listing.description)}
+                                    blurb={caps(listing.blurb)}
+                                    listed_at={listing.listed_at}>
                             </Tile>
                     ))
                         ) : (
