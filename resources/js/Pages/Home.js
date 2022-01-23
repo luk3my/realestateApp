@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Link, Head } from '@inertiajs/inertia-react';
 import axios from 'axios';
 import Pagination from 'react-js-pagination';
+import Tile from './Tile';
 
 export default function Home(props) {
     const [listings, setListings] = useState({...props.Listings});
@@ -82,7 +83,7 @@ export default function Home(props) {
         marginLeft: 'auto',
         marginRight: 'auto',
         top: '220px',
-        zIndex: '1000',
+        zIndex: '40',
         backgroundColor: 'rgba(0,0,0,.6)',
         padding: '5px',
         color: '#FFFFFF',
@@ -98,12 +99,7 @@ export default function Home(props) {
         position: 'sticky',
         top: '0',
         right: '0',
-        zIndex: '99999' 
-    }
-
-    const tile = {
-        minWidth: '75%',
-        marginBottom: '20px'
+        zIndex: '40' 
     }
 
     const pag = {
@@ -192,14 +188,16 @@ export default function Home(props) {
                     <div className="gap-6">
                     {listings.data.length > 0 ? (
                         listings.data.map(listing => (    
-                            <div key={listing.id} className="bg-white rounded-sm p-4 shadow-md w-5/6" style={tile}>
-                                <img src={listing.img_path} alt="Property Image" className="rounded-sm object-cover h-3/6 w-400px"/>
-                                <span className="font-extrabold text-xl mb-2">{listing.title}</span><br/>
-                                <span className="font-bold text-l mb-2">{caps(listing.type)} | {caps(listing.suburb)}</span><br />
-                                <span className="mr-14">Offers Above: <span className="font-semibold">${numCommas(listing.price)}</span></span>
-                                <span className="mr-14">Rooms: {listing.rooms}</span>
-                                <span className="">Size: {listing.area} sqm</span>
-                            </div>
+                            <Tile  title={listing.title}
+                                    img_path={listing.img_path} 
+                                    area={listing.area} 
+                                    price={numCommas(listing.price)}
+                                    rooms={listing.rooms}
+                                    suburb={caps(listing.suburb)}
+                                    type={caps(listing.type)}
+                                    description={listing.description}
+                                    blurb={listing.blurb}>
+                            </Tile>
                     ))
                         ) : (
                             <div className="col-span-4 lg:text-center lg:pt-14 mb-10">
@@ -226,7 +224,6 @@ export default function Home(props) {
                     </div>   
                     }
                 </div>  
-               
             </div>  
         )
 }
