@@ -74,15 +74,23 @@ export default function Home(props) {
     const headerStyle = {
         width: 'auto',
         height: '700px',
-        backgroundImage: `url(../../images/headerImg.jpg)`,
+        backgroundImage: `url(../../images/header.jpg)`,
         backgroundSize: 'cover',
+    };
+
+    const logoStyle = {
+        width: 'auto',
+        height: '120px',
+        backgroundImage: `url(../../images/unrealestate.png)`,
+        backgroundSize: 'auto',
+        backgroundRepeat: 'no-repeat'
     };
 
     const boxStyle = {
         position: 'relative',
         marginLeft: 'auto',
         marginRight: 'auto',
-        top: '220px',
+        top: '120px',
         zIndex: '40',
         backgroundColor: 'rgba(0,0,0,.6)',
         padding: '5px',
@@ -138,6 +146,7 @@ export default function Home(props) {
                     )}
                 </div>
                 <header style={headerStyle} className="w-full h-11">
+                    <div id="logo" style={logoStyle}></div>
                     <div style={boxStyle}>
                         <span className="text-2xl ml-6">Search properties for sale</span><span className="float-right cursor-pointer" onClick={resetList}><svg class="h-6 w-6 fill-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="5" cy="18" r="2" />  <circle cx="19" cy="6" r="2" />  <path d="M19 8v5a5 5 0 0 1 -5 5h-3l3 -3m0 6l-3 -3" />  <path d="M5 16v-5a5 5 0 0 1 5 -5h3l-3 -3m0 6l3 -3" /></svg></span><br/><br/>
                         <form className="pl-6 pr-6 h-35 grid grid-cols-3 gap-4 content-center" onSubmit={handleSubmit}>

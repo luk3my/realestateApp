@@ -5969,15 +5969,22 @@ function Home(props) {
   var headerStyle = {
     width: 'auto',
     height: '700px',
-    backgroundImage: "url(../../images/headerImg.jpg)",
+    backgroundImage: "url(../../images/header.jpg)",
     backgroundSize: 'cover'
+  };
+  var logoStyle = {
+    width: 'auto',
+    height: '120px',
+    backgroundImage: "url(../../images/unrealestate.png)",
+    backgroundSize: 'auto',
+    backgroundRepeat: 'no-repeat'
   };
 
   var boxStyle = _defineProperty({
     position: 'relative',
     marginLeft: 'auto',
     marginRight: 'auto',
-    top: '220px',
+    top: '120px',
     zIndex: '40',
     backgroundColor: 'rgba(0,0,0,.6)',
     padding: '5px',
@@ -6028,10 +6035,13 @@ function Home(props) {
           children: "Register"
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("header", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("header", {
       style: headerStyle,
       className: "w-full h-11",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        id: "logo",
+        style: logoStyle
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         style: boxStyle,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
           className: "text-2xl ml-6",
@@ -6155,7 +6165,7 @@ function Home(props) {
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {})]
         })]
-      })
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "relative flex items-top justify-center pl-10 pt-10 bg-gray-100 dark:bg-gray-900 w-full",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
