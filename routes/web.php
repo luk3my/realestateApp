@@ -29,7 +29,7 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
-        'Listings' => DB::table('Listings') 
+        'Listings' => DB::table('listings') 
                         ->join('types', 'types.id', 'listings.type_id')
                         ->join('suburbs', 'suburbs.id', 'listings.suburb_id')
                         ->select('listings.*','types.name as type', 'suburbs.name as suburb')
