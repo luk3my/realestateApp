@@ -13,7 +13,7 @@ class CreateListingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('listings', function (Blueprint $table) {
+        Schema::create('Listings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('type_id');     
             $table->foreignId('suburb_id');            
