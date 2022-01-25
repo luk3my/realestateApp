@@ -5441,6 +5441,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5461,6 +5467,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Dashboard(props) {
   var formError = false;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_objectSpread({}, props.Types)),
+      _useState2 = _slicedToArray(_useState, 2),
+      types = _useState2[0],
+      setTypes = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_objectSpread({}, props.Suburbs)),
+      _useState4 = _slicedToArray(_useState3, 2),
+      suburbs = _useState4[0],
+      setSuburbs = _useState4[1];
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
@@ -5495,60 +5511,60 @@ function Dashboard(props) {
     });
   };
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('1'),
-      _useState2 = _slicedToArray(_useState, 2),
-      type = _useState2[0],
-      setType = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('1'),
-      _useState4 = _slicedToArray(_useState3, 2),
-      suburb = _useState4[0],
-      setSuburb = _useState4[1];
-
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState6 = _slicedToArray(_useState5, 2),
-      title = _useState6[0],
-      setTitle = _useState6[1];
+      type = _useState6[0],
+      setType = _useState6[1];
 
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState8 = _slicedToArray(_useState7, 2),
-      stAdr = _useState8[0],
-      setStAdr = _useState8[1];
+      suburb = _useState8[0],
+      setSuburb = _useState8[1];
 
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState10 = _slicedToArray(_useState9, 2),
-      area = _useState10[0],
-      setArea = _useState10[1];
+      title = _useState10[0],
+      setTitle = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('1'),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState12 = _slicedToArray(_useState11, 2),
-      rooms = _useState12[0],
-      setRooms = _useState12[1];
+      stAdr = _useState12[0],
+      setStAdr = _useState12[1];
 
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState14 = _slicedToArray(_useState13, 2),
-      price = _useState14[0],
-      setPrice = _useState14[1];
+      area = _useState14[0],
+      setArea = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('1'),
       _useState16 = _slicedToArray(_useState15, 2),
-      blurb = _useState16[0],
-      setBlurb = _useState16[1];
+      rooms = _useState16[0],
+      setRooms = _useState16[1];
 
   var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState18 = _slicedToArray(_useState17, 2),
-      desc = _useState18[0],
-      setDesc = _useState18[1];
+      price = _useState18[0],
+      setPrice = _useState18[1];
 
   var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState20 = _slicedToArray(_useState19, 2),
-      img = _useState20[0],
-      setImg = _useState20[1];
+      blurb = _useState20[0],
+      setBlurb = _useState20[1];
 
   var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState22 = _slicedToArray(_useState21, 2),
-      errors = _useState22[0],
-      setErrors = _useState22[1];
+      desc = _useState22[0],
+      setDesc = _useState22[1];
+
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState24 = _slicedToArray(_useState23, 2),
+      img = _useState24[0],
+      setImg = _useState24[1];
+
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState26 = _slicedToArray(_useState25, 2),
+      errors = _useState26[0],
+      setErrors = _useState26[1];
 
   var handleTypeChange = function handleTypeChange(e) {
     return setType(e.target.value);
@@ -5617,8 +5633,15 @@ function Dashboard(props) {
       className: "text-red-600",
       children: error
     }), document.getElementById(divId));
-  };
+  }; // Casts to array
 
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setTypes(props.Types);
+  }, [props.Types]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setSuburbs(props.Suburbs);
+  }, [props.Suburbs]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_2__["default"], {
     auth: props.auth,
     errors: props.errors,
@@ -5653,14 +5676,20 @@ function Dashboard(props) {
                 value: type,
                 onChange: handleTypeChange,
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                  value: "1",
-                  children: "House"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                  value: "2",
-                  children: "Townhouse"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                  value: "3",
-                  children: "Appartment"
+                  value: "",
+                  selected: true,
+                  disabled: true,
+                  children: "Select type"
+                }), types.length > 0 ? types.map(function (type) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                    value: type.id,
+                    children: type.name
+                  });
+                }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                  value: "",
+                  disabled: true,
+                  selected: true,
+                  children: "There are no options to show"
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                 id: "type_error"
@@ -5670,15 +5699,27 @@ function Dashboard(props) {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
                 htmlFor: "suburb",
                 children: "Suburb"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
                 className: "form-control",
                 id: "suburb",
                 value: suburb,
                 onChange: handleSuburbChange,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                  value: "1",
-                  children: "Test"
-                })
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                  value: "",
+                  selected: true,
+                  disabled: true,
+                  children: "Select suburb"
+                }), suburbs.length > 0 ? suburbs.map(function (suburb) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                    value: suburb.id,
+                    children: suburb.name
+                  });
+                }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                  value: "",
+                  disabled: true,
+                  selected: true,
+                  children: "There are no options to show"
+                })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                 id: "suburb_error"
               })]

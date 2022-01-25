@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Authenticated from '@/Layouts/Authenticated';
 import { Head } from '@inertiajs/inertia-react';
 
 export default function Dashboard(props) {
     let formError = false;
+    const [types, setTypes] = useState({...props.Types});
+    const [suburbs, setSuburbs] = useState({...props.Suburbs});
 
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -39,8 +41,8 @@ export default function Dashboard(props) {
         });
     };
 
-    const [type, setType] = useState('1');
-    const [suburb, setSuburb] = useState('1');
+    const [type, setType] = useState('');
+    const [suburb, setSuburb] = useState('');
     const [title, setTitle] = useState('');
     const [stAdr, setStAdr] = useState('');
     const [area, setArea] = useState('');
@@ -89,6 +91,16 @@ export default function Dashboard(props) {
         );
     }
 
+      // Casts to array
+    useEffect(() => {
+        setTypes(props.Types);
+    }, [props.Types]);
+
+    useEffect(() => {
+        setSuburbs(props.Suburbs);
+    }, [props.Suburbs]);
+
+
     return (
         <Authenticated
             auth={props.auth}
@@ -107,16 +119,28 @@ export default function Dashboard(props) {
                         <div className="form-group">
                             <label htmlFor="exampleFormControlSelect1">Property Type</label>
                             <select className="form-control" id="type" value={type} onChange={handleTypeChange}>
-                                <option value="1">House</option>
-                                <option value="2">Townhouse</option>
-                                <option value="3">Appartment</option>
+                                <option value="" selected disabled>Select type</option>
+                                {types.length > 0 ? (
+                                        types.map(type => (    
+                                            <option value={type.id}>{type.name}</option>
+                                     ))
+                                ) : (
+                                     <option value="" disabled selected>There are no options to show</option>
+                                )} 
                             </select>
                             <div id="type_error"></div>
                         </div>
                         <div className="form-group">
                             <label htmlFor="suburb">Suburb</label>
                             <select className="form-control" id="suburb" value={suburb} onChange={handleSuburbChange}>
-                                <option value="1">Test</option>
+                                <option value="" selected disabled>Select suburb</option>
+                                {suburbs.length > 0 ? (
+                                        suburbs.map(suburb => (    
+                                            <option value={suburb.id}>{suburb.name}</option>
+                                     ))
+                                ) : (
+                                     <option value="" disabled selected>There are no options to show</option>
+                                )} 
                             </select>
                             <div id="suburb_error"></div>
                         </div>
