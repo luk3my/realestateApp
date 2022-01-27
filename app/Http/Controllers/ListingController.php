@@ -37,8 +37,9 @@ class ListingController extends Controller
         $fileName = $file->getClientOriginalName();
         $storeName = date('His').$fileName;
         $request->file('image')->storeAs('images/', $storeName, 'public');
-        $DS = DIRECTORY_SEPARATOR;
-        $imgPath = $DS.'storage'.$DS.'images'.$DS.basename($storeName);
+        // $imgPath = $DS.'storage'.$DS.'app'.$DS.'public'.$DS.'images'.$DS.basename($storeName);
+        // $imgPath = Storage::disk('public')->path('images'.$DS.$storeName);
+        $imgPath = asset('images'.DIRECTORY_SEPARATOR.$storeName);
     }
 
     Listing::create([
