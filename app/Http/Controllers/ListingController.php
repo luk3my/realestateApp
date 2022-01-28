@@ -36,7 +36,6 @@ class ListingController extends Controller
         $file = $request->file('image');
         $fileName = $file->getClientOriginalName();
         $storeName = date('His').$fileName;
-        // $request->file('image')->storeAs('images', $storeName);
         $request->file('image')->storeAs('images', $storeName, 'my_upload');
         $imgPath =  asset('files/images/' . $storeName);
     }
