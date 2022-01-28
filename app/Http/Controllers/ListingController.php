@@ -36,10 +36,11 @@ class ListingController extends Controller
         $file = $request->file('image');
         $fileName = $file->getClientOriginalName();
         $storeName = date('His').$fileName;
-        $request->file('image')->storeAs('images/', $storeName, 'public');
+        $request->file('image')->storeAs('public/images', $storeName);
         // $imgPath = $DS.'storage'.$DS.'app'.$DS.'public'.$DS.'images'.$DS.basename($storeName);
-        // $imgPath = Storage::disk('public')->path('images'.$DS.$storeName);
-        $imgPath = asset('images'.DIRECTORY_SEPARATOR.$storeName);
+        // $imgPath = Storage::disk('public')->path('app/images/'.$storeName);
+        // $imgPath = storage_path('images/'.$storeName);
+        $imgPath = Storage::url('images/'.$storeName);
     }
 
     Listing::create([
