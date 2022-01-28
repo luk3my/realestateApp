@@ -6375,7 +6375,7 @@ function Tile(listing) {
       className: "bg-white rounded-sm p-4 shadow-md w-5/6 cursor-pointer",
       style: tile,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-        src: "url(".concat(listing.img_path, ")"),
+        src: "url(public/storage/images".concat(listing.img_path, ")"),
         alt: "Property Image",
         className: "rounded-sm object-cover h-3/6 w-400px"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {

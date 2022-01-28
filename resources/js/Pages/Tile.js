@@ -12,7 +12,7 @@ export default function Tile(listing) {
   return (
     <>
       <div key={listing.id} onClick={() => setShowModal(true)} className="bg-white rounded-sm p-4 shadow-md w-5/6 cursor-pointer" style={tile}>
-        <img src={`url(${listing.img_path})`} alt="Property Image" className="rounded-sm object-cover h-3/6 w-400px"/>
+        <img src={`url(public/storage/images${listing.img_path})`} alt="Property Image" className="rounded-sm object-cover h-3/6 w-400px"/>
         <span className="font-extrabold text-xl mb-2">{listing.title}</span><br/>
         <span className="font-bold text-l mb-2">{listing.type} | {listing.suburb}</span><br />
         <span className="mr-14">Offers Above: <span className="font-semibold">${listing.price}</span></span>
