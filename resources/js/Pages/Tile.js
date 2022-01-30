@@ -5,14 +5,20 @@ export default function Tile(listing) {
   const [showModal, setShowModal] = useState(false);
 
   const tile = {
-        minWidth: '75%',
+        width: '75%',
+        marginBottom: '20px',
+  }
+
+  const img = {
+        width: '100%',
+        height: '50vh',
         marginBottom: '20px',
   }
 
   return (
     <>
-      <div key={listing.id} onClick={() => setShowModal(true)} className="bg-white rounded-sm p-4 shadow-md w-5/6 cursor-pointer" style={tile}>
-        <img src={listing.img_path} alt="Property Image" className="rounded-sm object-cover h-3/6 w-400px"/>
+      <div key={listing.id} onClick={() => setShowModal(true)} className="object-cover bg-white rounded-sm p-4 shadow-md cursor-pointer" style={tile}>
+        <img src={listing.img_path} alt="Property Image" className="rounded-sm" style={img}/>
         <span className="font-extrabold text-xl mb-2">{listing.title}</span><br/>
         <span className="font-bold text-l mb-2">{listing.type} | {listing.suburb}</span><br />
         <span className="mr-14">Offers Above: <span className="font-semibold">${listing.price}</span></span>

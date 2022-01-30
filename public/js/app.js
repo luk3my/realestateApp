@@ -6364,7 +6364,12 @@ function Tile(listing) {
       setShowModal = _useState2[1];
 
   var tile = {
-    minWidth: '75%',
+    width: '75%',
+    marginBottom: '20px'
+  };
+  var img = {
+    width: '100%',
+    height: '50vh',
     marginBottom: '20px'
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
@@ -6372,12 +6377,13 @@ function Tile(listing) {
       onClick: function onClick() {
         return setShowModal(true);
       },
-      className: "bg-white rounded-sm p-4 shadow-md w-5/6 cursor-pointer",
+      className: "object-cover bg-white rounded-sm p-4 shadow-md cursor-pointer",
       style: tile,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
         src: listing.img_path,
         alt: "Property Image",
-        className: "rounded-sm object-cover h-3/6 w-400px"
+        className: "rounded-sm",
+        style: img
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
         className: "font-extrabold text-xl mb-2",
         children: listing.title
