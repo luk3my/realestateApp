@@ -10,7 +10,7 @@ export default function Tile(listing) {
   }
 
   const img = {
-        width: '100%',
+        width: '40vw',
         height: '50vh',
         marginBottom: '20px',
   }

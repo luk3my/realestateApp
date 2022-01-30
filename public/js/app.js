@@ -6368,7 +6368,7 @@ function Tile(listing) {
     marginBottom: '20px'
   };
   var img = {
-    width: '100%',
+    width: '40vw',
     height: '50vh',
     marginBottom: '20px'
   };
