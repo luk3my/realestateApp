@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import { Link, Head } from '@inertiajs/inertia-react';
 import axios from 'axios';
 import Pagination from 'react-js-pagination';
 import Tile from './Tile';
+import PopoutMenu from './PopoutMenu';
 
 export default function Home(props) {
     const [listings, setListings] = useState({...props.Listings});
@@ -11,10 +12,12 @@ export default function Home(props) {
     const [typeVal, setType] = useState('');
     const [suburbVal, setSuburb] = useState('');
     const [priceVal, setPrice] = useState('');
+    const [showMenu, setMenuVis] = useState(false);
 
     const handleTypeChange=(e)=> setType(e.target.value);
     const handleSuburbChange=(e)=> setSuburb(e.target.value);
     const handlePriceChange=(e)=> setPrice(e.target.value);
+    const handleMenuVisChange=(e)=> setMenuVis(!showMenu);
 
     const resetList=(e)=> {
         e.stopPropagation();    
@@ -188,7 +191,7 @@ export default function Home(props) {
                                 <div id="type_error"></div>
                             </div>
                             <span className="w-1/3"><button type="submit" className="btn btn-primary">Search</button></span>
-                            <span></span>
+                            <span className="w-1/3"><button onClick={handleMenuVisChange} className="btn btn-primary">More</button></span>
                             <span></span>
                         </form>
                     </div>
@@ -234,6 +237,9 @@ export default function Home(props) {
                     </div>   
                     }
                 </div>  
+
+                <PopoutMenu show={showMenu} setVis={setMenuVis}/>
+
             </div>  
         )
 }
