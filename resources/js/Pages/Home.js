@@ -17,7 +17,9 @@ export default function Home(props) {
     const handleTypeChange=(e)=> setType(e.target.value);
     const handleSuburbChange=(e)=> setSuburb(e.target.value);
     const handlePriceChange=(e)=> setPrice(e.target.value);
-    const handleMenuVisChange=(e)=> setMenuVis(!showMenu);
+    const handleMenuVisChange=(e)=> { 
+        setMenuVis(!showMenu);
+    }
 
     const resetList=(e)=> {
         e.stopPropagation();    
@@ -111,6 +113,16 @@ export default function Home(props) {
         top: '0',
         right: '0',
         zIndex: '40' 
+    }
+
+    const greyout = {
+        height: '100vh',
+        width: '100%',
+        background: 'rgba(0, 0, 0, 0.7)',
+        position: 'fixed',
+        top: '0',
+        zIndex: '60',
+
     }
 
     const pag = {
@@ -238,7 +250,9 @@ export default function Home(props) {
                     }
                 </div>  
 
-                <PopoutMenu show={showMenu} setVis={setMenuVis}/>
+                <PopoutMenu show={showMenu} handleMenuVisChange={handleMenuVisChange.bind(this)}/>
+
+                { showMenu ? <div style={greyout}></div> : null }
 
             </div>  
         )

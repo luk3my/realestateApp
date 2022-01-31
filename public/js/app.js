@@ -5964,7 +5964,7 @@ function Home(props) {
   };
 
   var handleMenuVisChange = function handleMenuVisChange(e) {
-    return setMenuVis(!showMenu);
+    setMenuVis(!showMenu);
   };
 
   var resetList = function resetList(e) {
@@ -6050,6 +6050,14 @@ function Home(props) {
     height: '100vh',
     position: '-webkit-sticky'
   }, _defineProperty(_addStyle, "position", 'sticky'), _defineProperty(_addStyle, "top", '0'), _defineProperty(_addStyle, "right", '0'), _defineProperty(_addStyle, "zIndex", '40'), _addStyle);
+  var greyout = {
+    height: '100vh',
+    width: '100%',
+    background: 'rgba(0, 0, 0, 0.7)',
+    position: 'fixed',
+    top: '0',
+    zIndex: '60'
+  };
   var pag = {
     marginTop: '20px'
   };
@@ -6266,8 +6274,10 @@ function Home(props) {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_PopoutMenu__WEBPACK_IMPORTED_MODULE_5__["default"], {
       show: showMenu,
-      setVis: setMenuVis
-    })]
+      handleMenuVisChange: handleMenuVisChange.bind(this)
+    }), showMenu ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      style: greyout
+    }) : null]
   });
 }
 
@@ -6363,22 +6373,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function popoutMenu(props) {
-  var popoutSyle = {
+  var popoutStyle = {
     position: 'fixed',
     top: '0',
-    zIndex: '40',
-    backgroundColor: 'black',
+    zIndex: '80',
+    backgroundColor: '#527d9c',
     height: '100vh',
-    width: props.show ? '35%' : '0%',
+    width: props.show ? '30%' : '0%',
     transition: "all .4s"
   };
+  var contentStyle = {
+    display: props.show ? 'block' : 'none'
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    style: popoutSyle,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-      className: "w-1/3",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-        className: "btn btn-primary",
-        children: "Close"
+    style: popoutStyle,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      style: contentStyle,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+        className: "w-1/3",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          onClick: props.handleMenuVisChange,
+          className: "btn btn-primary",
+          children: "Close"
+        })
       })
     })
   });

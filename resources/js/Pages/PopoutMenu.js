@@ -2,19 +2,25 @@ import React, {useState, useEffect} from 'react';
 
 export default function popoutMenu(props) {
 
-const popoutSyle = {
+const popoutStyle = {
         position: 'fixed',
         top: '0',
-        zIndex: '40',
-        backgroundColor: 'black',
+        zIndex: '80',
+        backgroundColor: '#527d9c',
         height: '100vh',
-        width: props.show ? '35%' : '0%',
+        width: props.show ? '30%' : '0%',
         transition: "all .4s",
     }
 
+    const contentStyle = {
+        display: props.show ? 'block' : 'none',
+    }
+
   return (
-        <div style={popoutSyle}>
-            <span className="w-1/3"><button className="btn btn-primary">Close</button></span>
+        <div style={popoutStyle}>
+            <div style={contentStyle}>
+                <span className="w-1/3"><button onClick={props.handleMenuVisChange} className="btn btn-primary">Close</button></span>
+            </div>
         </div>
   );
 }
