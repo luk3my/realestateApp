@@ -112,13 +112,13 @@ export default function Home(props) {
         position: 'sticky',
         top: '0',
         right: '0',
-        zIndex: '40' 
+        zIndex: '20' 
     }
 
     const greyout = {
         height: '100vh',
         width: '100%',
-        background: 'rgba(0, 0, 0, 0.7)',
+        background: 'rgba(0, 0, 0, 0.5)',
         position: 'fixed',
         top: '0',
         zIndex: '60',
@@ -146,12 +146,12 @@ export default function Home(props) {
             <div>
                 <div className="absolute top-0 right-0 px-6 py-4 sm:block">
                     {props.auth.user ? (
-                        <Link style={links} href={route('dashboard')} className="hover:bg-gray-100 text-black-800 font-semibold py-1 px-2 border border-gray-400 shadow">
+                        <Link style={links} href={route('dashboard')} className="hover:bg-gray-100 hover:text-black-800 font-semibold py-1 px-2 border border-gray-400 shadow">
                             Dashboard
                         </Link>
                     ) : (
                         <div>
-                            <Link style={links} className="hover:bg-gray-100 text-black-800 font-semibold py-1 px-2 border border-gray-400 shadow mr-2" href={route('login')}>
+                            <Link style={links} className="hover:bg-gray-100 hover:text-black-800 font-semibold py-1 px-2 border border-gray-400 shadow mr-2" href={route('login')}>
                                 Log in
                             </Link>
                             <Link style={links} href={route('register')} className="hover:bg-gray-100 text-black-800 font-semibold py-1 px-2 border border-gray-400 shadow">
@@ -163,7 +163,25 @@ export default function Home(props) {
                 <header style={headerStyle} className="w-full h-11">
                     <div id="logo" style={logoStyle}></div>
                     <div style={boxStyle}>
-                        <span className="text-2xl ml-6">Search properties for sale</span><span className="float-right cursor-pointer" onClick={resetList}><svg class="h-6 w-6 fill-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="5" cy="18" r="2" />  <circle cx="19" cy="6" r="2" />  <path d="M19 8v5a5 5 0 0 1 -5 5h-3l3 -3m0 6l-3 -3" />  <path d="M5 16v-5a5 5 0 0 1 5 -5h3l-3 -3m0 6l3 -3" /></svg></span><br/><br/>
+                        <span className="text-2xl ml-6">Search properties for sale</span>
+                        <span className="float-right cursor-pointer" onClick={resetList}>
+                               <svg class="h-6 w-6 fill-white"
+                                    width="24" height="24" 
+                                    viewBox="0 0 24 24" 
+                                    stroke-width="2" 
+                                    stroke="currentColor" 
+                                    fill="none" 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round"
+                                >  
+                                <path stroke="none" d="M0 0h24v24H0z"/>  
+                                <circle cx="5" cy="18" r="2" />  
+                                <circle cx="19" cy="6" r="2" />  
+                                <path d="M19 8v5a5 5 0 0 1 -5 5h-3l3 -3m0 6l-3 -3" />  
+                                <path d="M5 16v-5a5 5 0 0 1 5 -5h3l-3 -3m0 6l3 -3" />
+                                </svg>
+                        </span><br/><br/>
+
                         <form className="pl-6 pr-6 h-35 grid grid-cols-3 gap-4 content-center" onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label htmlFor="exampleFormControlSelect1">Property Type</label>
@@ -202,10 +220,19 @@ export default function Home(props) {
                                 </select>
                                 <div id="type_error"></div>
                             </div>
-                            <span className="w-1/3"><button type="submit" className="btn btn-primary">Search</button></span>
-                            <span className="w-1/3"><button onClick={handleMenuVisChange} className="btn btn-primary">More</button></span>
+                            <span>
+                                <button style={links} type="submit" className="hover:bg-gray-100 hover:text-black font-semibold py-1 px-2 border border-400 mr-2 mb-1">Search</button>
+                            </span>
+                            <span>
+                                <button style={links} onClick={handleMenuVisChange} className="hover:bg-gray-100 py-1 px-2 border border-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                                    </svg>
+                                </button>
+                            </span>
                             <span></span>
                         </form>
+
                     </div>
                 </header>
                 <div className="relative flex items-top justify-center pl-10 pt-10 bg-gray-100 dark:bg-gray-900 w-full">
@@ -250,7 +277,11 @@ export default function Home(props) {
                     }
                 </div>  
 
-                <PopoutMenu show={showMenu} handleMenuVisChange={handleMenuVisChange.bind(this)}/>
+                <PopoutMenu show={showMenu} 
+                            handleMenuVisChange={handleMenuVisChange.bind(this)}
+                            types={types}
+                            suburbs={suburbs}
+                />
 
                 { showMenu ? <div style={greyout}></div> : null }
 

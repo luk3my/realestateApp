@@ -6049,11 +6049,11 @@ function Home(props) {
     width: 'auto',
     height: '100vh',
     position: '-webkit-sticky'
-  }, _defineProperty(_addStyle, "position", 'sticky'), _defineProperty(_addStyle, "top", '0'), _defineProperty(_addStyle, "right", '0'), _defineProperty(_addStyle, "zIndex", '40'), _addStyle);
+  }, _defineProperty(_addStyle, "position", 'sticky'), _defineProperty(_addStyle, "top", '0'), _defineProperty(_addStyle, "right", '0'), _defineProperty(_addStyle, "zIndex", '20'), _addStyle);
   var greyout = {
     height: '100vh',
     width: '100%',
-    background: 'rgba(0, 0, 0, 0.7)',
+    background: 'rgba(0, 0, 0, 0.5)',
     position: 'fixed',
     top: '0',
     zIndex: '60'
@@ -6080,12 +6080,12 @@ function Home(props) {
       children: props.auth.user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
         style: links,
         href: route('dashboard'),
-        className: "hover:bg-gray-100 text-black-800 font-semibold py-1 px-2 border border-gray-400 shadow",
+        className: "hover:bg-gray-100 hover:text-black-800 font-semibold py-1 px-2 border border-gray-400 shadow",
         children: "Dashboard"
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
           style: links,
-          className: "hover:bg-gray-100 text-black-800 font-semibold py-1 px-2 border border-gray-400 shadow mr-2",
+          className: "hover:bg-gray-100 hover:text-black-800 font-semibold py-1 px-2 border border-gray-400 shadow mr-2",
           href: route('login'),
           children: "Log in"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
@@ -6119,20 +6119,20 @@ function Home(props) {
             fill: "none",
             "stroke-linecap": "round",
             "stroke-linejoin": "round",
-            children: ["  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
               stroke: "none",
               d: "M0 0h24v24H0z"
-            }), "  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("circle", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("circle", {
               cx: "5",
               cy: "18",
               r: "2"
-            }), "  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("circle", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("circle", {
               cx: "19",
               cy: "6",
               r: "2"
-            }), "  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
               d: "M19 8v5a5 5 0 0 1 -5 5h-3l3 -3m0 6l-3 -3"
-            }), "  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
               d: "M5 16v-5a5 5 0 0 1 5 -5h3l-3 -3m0 6l3 -3"
             })]
           })
@@ -6217,18 +6217,30 @@ function Home(props) {
               id: "type_error"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "w-1/3",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+              style: links,
               type: "submit",
-              className: "btn btn-primary",
+              className: "hover:bg-gray-100 hover:text-black font-semibold py-1 px-2 border border-400 mr-2 mb-1",
               children: "Search"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: "w-1/3",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+              style: links,
               onClick: handleMenuVisChange,
-              className: "btn btn-primary",
-              children: "More"
+              className: "hover:bg-gray-100 py-1 px-2 border border-400",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("svg", {
+                xmlns: "http://www.w3.org/2000/svg",
+                className: "h-6 w-6",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                })
+              })
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {})]
         })]
@@ -6274,7 +6286,9 @@ function Home(props) {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_PopoutMenu__WEBPACK_IMPORTED_MODULE_5__["default"], {
       show: showMenu,
-      handleMenuVisChange: handleMenuVisChange.bind(this)
+      handleMenuVisChange: handleMenuVisChange.bind(this),
+      types: types,
+      suburbs: suburbs
     }), showMenu ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       style: greyout
     }) : null]
@@ -6372,6 +6386,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+
 function popoutMenu(props) {
   var popoutStyle = {
     position: 'fixed',
@@ -6380,23 +6395,129 @@ function popoutMenu(props) {
     backgroundColor: '#527d9c',
     height: '100vh',
     width: props.show ? '30%' : '0%',
-    transition: "all .4s"
+    transition: "all .5s"
   };
   var contentStyle = {
     display: props.show ? 'block' : 'none'
   };
+  var chevronStyle = {
+    cursor: 'pointer',
+    "float": 'right',
+    height: 'calc(100vh - 20px)'
+  };
+  var links = {
+    color: '#B8B8B8',
+    borderColor: '#B8B8B8'
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     style: popoutStyle,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       style: contentStyle,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-        className: "w-1/3",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          onClick: props.handleMenuVisChange,
-          className: "btn btn-primary",
-          children: "Close"
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+        style: chevronStyle,
+        onClick: props.handleMenuVisChange,
+        xmlns: "http://www.w3.org/2000/svg",
+        "class": "h-7 w-7",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M11 19l-7-7 7-7m8 14l-7-7 7-7"
         })
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
+        className: "pl-6 pr-6 h-35 grid grid-cols-1 gap-4 content-center",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+          className: "mb-5 mt-5 text-white",
+          children: "Advanced Filters"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "form-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+            className: "text-white",
+            htmlFor: "exampleFormControlSelect1",
+            children: "Property Type"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+            className: "form-control select",
+            id: "type",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: "",
+              selected: true,
+              children: "All"
+            }), props.types.length > 0 ? props.types.map(function (type) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                value: type.id,
+                children: type.name
+              }, type.id);
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: "",
+              disabled: true,
+              selected: true,
+              children: "There are no options to show"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            id: "type_error"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "form-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+            className: "text-white",
+            htmlFor: "exampleFormControlSelect1",
+            children: "Suburb"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+            className: "form-control select",
+            id: "suburb",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: "",
+              selected: true,
+              children: "All"
+            }), props.suburbs.length > 0 ? props.suburbs.map(function (suburb) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                value: suburb.id,
+                children: suburb.name
+              }, suburb.id);
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: "",
+              disabled: true,
+              selected: true,
+              children: "There are no options to show"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            id: "type_error"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "form-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+            className: "text-white",
+            htmlFor: "exampleFormControlSelect1",
+            children: "Price"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+            className: "form-control select",
+            id: "price",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: "",
+              selected: true,
+              children: "All"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: "<",
+              children: "< 500k"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: ">",
+              children: "> 500k"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            id: "type_error"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            style: links,
+            type: "submit",
+            className: "hover:bg-gray-100 font-semibold py-1 px-2 border border-400 mr-2 mb-1",
+            children: "Search"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {})]
+      })]
     })
   });
 }
