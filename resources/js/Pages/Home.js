@@ -6,6 +6,20 @@ import Tile from './Tile';
 import PopoutMenu from './PopoutMenu';
 
 export default function Home(props) {
+
+    // Window size hooks
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+    const handleWindowResize = () => {
+        setWindowWidth(window.innerWidth);
+        setWindowHeight(window.innerHeight);
+    };
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowResize);
+        return () => window.removeEventListener('resize', handleWindowResize);
+    });
+
+
     const [listings, setListings] = useState({...props.Listings});
     const [types, setTypes] = useState({...props.Types});
     const [suburbs, setSuburbs] = useState({...props.Suburbs});
@@ -106,7 +120,7 @@ export default function Home(props) {
     };
 
     const addStyle = {
-        width:'auto',
+        width:'420px',
         height:'100vh',
         position: '-webkit-sticky', /* Safari */
         position: 'sticky',
@@ -132,6 +146,10 @@ export default function Home(props) {
     const links = {
         color: '#B8B8B8',
         borderColor: '#B8B8B8'
+    }
+
+    const container = {
+        paddingLeft: windowWidth > 1500 ? '30px' : '80px'
     }
 
     const caps = str => {
@@ -235,7 +253,7 @@ export default function Home(props) {
 
                     </div>
                 </header>
-                <div className="relative flex items-top justify-center pl-10 pt-10 bg-gray-100 dark:bg-gray-900 w-full">
+                <div style={container} className="relative flex items-top justify-center pt-10 bg-gray-100 dark:bg-gray-900 w-full">
                     <div className="gap-6">
                     {listings.data.length > 0 ? (
                         listings.data.map(listing => (    
@@ -248,7 +266,8 @@ export default function Home(props) {
                                     type={caps(listing.type)}
                                     description={caps(listing.description)}
                                     blurb={caps(listing.blurb)}
-                                    listed_at={listing.listed_at}>
+                                    listed_at={listing.listed_at}
+                                    windowWidth={windowWidth}>
                             </Tile>
                     ))
                         ) : (
@@ -270,10 +289,12 @@ export default function Home(props) {
                         />
                     </div>  
                     </div>
-                    { listings.data.length > 0 &&
-                    <div style={addStyle} className="pr-6">
-                        <img src="url(../../images/fakeAdd.jpg" className="shadow-sm"/>
-                    </div>   
+                    { 
+                        listings.data.length > 0 && windowWidth > 1550 ? (
+                            <div style={addStyle} className="pr-6">
+                                <img src="url(../../images/fakeAdd.jpg" className="shadow-sm"/>
+                            </div>
+                        ) : null
                     }
                 </div>  
 

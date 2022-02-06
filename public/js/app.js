@@ -5916,40 +5916,63 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function Home(props) {
   var _addStyle, _jsx2;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_objectSpread({}, props.Listings)),
+  // Window size hooks
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(window.innerWidth),
       _useState2 = _slicedToArray(_useState, 2),
-      listings = _useState2[0],
-      setListings = _useState2[1];
+      windowWidth = _useState2[0],
+      setWindowWidth = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_objectSpread({}, props.Types)),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(window.innerHeight),
       _useState4 = _slicedToArray(_useState3, 2),
-      types = _useState4[0],
-      setTypes = _useState4[1];
+      windowHeight = _useState4[0],
+      setWindowHeight = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_objectSpread({}, props.Suburbs)),
+  var handleWindowResize = function handleWindowResize() {
+    setWindowWidth(window.innerWidth);
+    setWindowHeight(window.innerHeight);
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    window.addEventListener('resize', handleWindowResize);
+    return function () {
+      return window.removeEventListener('resize', handleWindowResize);
+    };
+  });
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_objectSpread({}, props.Listings)),
       _useState6 = _slicedToArray(_useState5, 2),
-      suburbs = _useState6[0],
-      setSuburbs = _useState6[1];
+      listings = _useState6[0],
+      setListings = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_objectSpread({}, props.Types)),
       _useState8 = _slicedToArray(_useState7, 2),
-      typeVal = _useState8[0],
-      setType = _useState8[1];
+      types = _useState8[0],
+      setTypes = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_objectSpread({}, props.Suburbs)),
       _useState10 = _slicedToArray(_useState9, 2),
-      suburbVal = _useState10[0],
-      setSuburb = _useState10[1];
+      suburbs = _useState10[0],
+      setSuburbs = _useState10[1];
 
   var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState12 = _slicedToArray(_useState11, 2),
-      priceVal = _useState12[0],
-      setPrice = _useState12[1];
+      typeVal = _useState12[0],
+      setType = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState14 = _slicedToArray(_useState13, 2),
-      showMenu = _useState14[0],
-      setMenuVis = _useState14[1];
+      suburbVal = _useState14[0],
+      setSuburb = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState16 = _slicedToArray(_useState15, 2),
+      priceVal = _useState16[0],
+      setPrice = _useState16[1];
+
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState18 = _slicedToArray(_useState17, 2),
+      showMenu = _useState18[0],
+      setMenuVis = _useState18[1];
 
   var handleTypeChange = function handleTypeChange(e) {
     return setType(e.target.value);
@@ -6046,7 +6069,7 @@ function Home(props) {
   }, "padding", '15px');
 
   var addStyle = (_addStyle = {
-    width: 'auto',
+    width: '420px',
     height: '100vh',
     position: '-webkit-sticky'
   }, _defineProperty(_addStyle, "position", 'sticky'), _defineProperty(_addStyle, "top", '0'), _defineProperty(_addStyle, "right", '0'), _defineProperty(_addStyle, "zIndex", '20'), _addStyle);
@@ -6064,6 +6087,9 @@ function Home(props) {
   var links = {
     color: '#B8B8B8',
     borderColor: '#B8B8B8'
+  };
+  var container = {
+    paddingLeft: windowWidth > 1500 ? '30px' : '80px'
   };
 
   var caps = function caps(str) {
@@ -6246,7 +6272,8 @@ function Home(props) {
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-      className: "relative flex items-top justify-center pl-10 pt-10 bg-gray-100 dark:bg-gray-900 w-full",
+      style: container,
+      className: "relative flex items-top justify-center pt-10 bg-gray-100 dark:bg-gray-900 w-full",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "gap-6",
         children: [listings.data.length > 0 ? listings.data.map(function (listing) {
@@ -6260,7 +6287,8 @@ function Home(props) {
             type: caps(listing.type),
             description: caps(listing.description),
             blurb: caps(listing.blurb),
-            listed_at: listing.listed_at
+            listed_at: listing.listed_at,
+            windowWidth: windowWidth
           });
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
           className: "col-span-4 lg:text-center lg:pt-14 mb-10",
@@ -6276,14 +6304,14 @@ function Home(props) {
             itemClass: "page-item"
           }, _defineProperty(_jsx2, "itemClass", "page-link"), _defineProperty(_jsx2, "firstPageText", "First"), _defineProperty(_jsx2, "lastPageText", "Last"), _jsx2))
         })]
-      }), listings.data.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      }), listings.data.length > 0 && windowWidth > 1550 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         style: addStyle,
         className: "pr-6",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
           src: "url(../../images/fakeAdd.jpg",
           className: "shadow-sm"
         })
-      })]
+      }) : null]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_PopoutMenu__WEBPACK_IMPORTED_MODULE_5__["default"], {
       show: showMenu,
       handleMenuVisChange: handleMenuVisChange.bind(this),
@@ -6566,8 +6594,8 @@ function Tile(listing) {
     marginBottom: '20px'
   };
   var img = {
-    width: '40vw',
-    height: '50vh',
+    width: listing.windowWidth > 1550 ? '920px' : '100%',
+    height: listing.windowWidth > 1550 ? '650px' : '230px',
     marginBottom: '20px'
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {

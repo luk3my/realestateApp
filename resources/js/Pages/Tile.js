@@ -10,8 +10,8 @@ export default function Tile(listing) {
   }
 
   const img = {
-        width: '40vw',
-        height: '50vh',
+        width: listing.windowWidth > 1550 ? '920px' : '100%',
+        height: listing.windowWidth > 1550 ? '650px' : '230px',
         marginBottom: '20px',
   }
 
