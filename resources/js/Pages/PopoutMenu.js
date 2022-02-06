@@ -35,7 +35,8 @@ export default function popoutMenu(props) {
                 </svg>
 
                  <form className="pl-6 pr-6 h-35 grid grid-cols-1 gap-4 content-center">
-                            <h3 className="mb-5 mt-5 text-white">Advanced Filters</h3>
+                            <h3 className="mb-1 mt-5 text-white">Advanced Filters</h3>
+                            <h6 className="mb-1 text-grey">(Work in progress)</h6>
                             <div className="form-group">
                                 <label className="text-white" htmlFor="exampleFormControlSelect1">Property Type</label>
                                 <select className="form-control select" id="type">
@@ -74,7 +75,7 @@ export default function popoutMenu(props) {
                                 <div id="type_error"></div>
                             </div>
                             <span>
-                                <button style={links} type="submit" className="hover:bg-gray-100 font-semibold py-1 px-2 border border-400 mr-2 mb-1">Search</button>
+                                <button style={links} /**type="submit"**/ className="hover:bg-gray-100 font-semibold py-1 px-2 border border-400 mr-2 mb-1" disabled>Search</button>
                             </span>
                             <span></span>
                             <span></span>
