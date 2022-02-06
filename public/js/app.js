@@ -6049,8 +6049,9 @@ function Home(props) {
   };
   var logoStyle = {
     width: 'auto',
-    height: '120px',
-    backgroundImage: "url(../../images/unrealestate.png)",
+    height: windowWidth > 1500 ? '120px' : '80px',
+    backgroundImage: windowWidth > 1500 ? "url(../../images/unrealestate.png)" : "url(../../images/unrealestateSmall.png)",
+    // top: windowWidth > 1500 ? '' : '40px',
     backgroundSize: 'auto',
     backgroundRepeat: 'no-repeat'
   };
@@ -6088,6 +6089,12 @@ function Home(props) {
     color: '#B8B8B8',
     borderColor: '#B8B8B8'
   };
+  var linksCont = {
+    position: 'absolute',
+    top: windowWidth > 650 ? '0px' : '60px',
+    right: windowWidth > 650 ? '0px' : '',
+    left: windowWidth > 650 ? '' : '-10px'
+  };
   var container = {
     paddingLeft: windowWidth > 1500 ? '30px' : '80px'
   };
@@ -6102,7 +6109,8 @@ function Home(props) {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-      className: "absolute top-0 right-0 px-6 py-4 sm:block",
+      style: linksCont,
+      className: "px-6 py-4 sm:block",
       children: props.auth.user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
         style: links,
         href: route('dashboard'),

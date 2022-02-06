@@ -99,8 +99,9 @@ export default function Home(props) {
 
     const logoStyle = {
         width: 'auto',
-        height: '120px',
-        backgroundImage: `url(../../images/unrealestate.png)`,
+        height: windowWidth > 1500 ? '120px' : '80px',
+        backgroundImage: windowWidth > 1500 ? `url(../../images/unrealestate.png)` : `url(../../images/unrealestateSmall.png)`,
+        // top: windowWidth > 1500 ? '' : '40px',
         backgroundSize: 'auto',
         backgroundRepeat: 'no-repeat'
     };
@@ -145,7 +146,14 @@ export default function Home(props) {
 
     const links = {
         color: '#B8B8B8',
-        borderColor: '#B8B8B8'
+        borderColor: '#B8B8B8',
+    }
+
+    const linksCont = {
+        position: 'absolute',
+        top: windowWidth > 650 ? '0px' : '60px',
+        right: windowWidth > 650 ? '0px' : '',
+        left:  windowWidth > 650 ? '' : '-10px',
     }
 
     const container = {
@@ -162,7 +170,7 @@ export default function Home(props) {
 
     return (
             <div>
-                <div className="absolute top-0 right-0 px-6 py-4 sm:block">
+                <div style={linksCont} className="px-6 py-4 sm:block">
                     {props.auth.user ? (
                         <Link style={links} href={route('dashboard')} className="hover:bg-gray-100 hover:text-black-800 font-semibold py-1 px-2 border border-gray-400 shadow">
                             Dashboard
