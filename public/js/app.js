@@ -5990,6 +5990,9 @@ function Home(props) {
     setMenuVis(!showMenu);
   };
 
+  var propertyType = windowWidth > 650 ? 'Property Type' : 'Type';
+  var boxTitle = windowWidth > 650 ? 'Search properties for sale' : 'Search';
+
   var resetList = function resetList(e) {
     e.stopPropagation();
     setType('');
@@ -6051,7 +6054,6 @@ function Home(props) {
     width: 'auto',
     height: windowWidth > 1500 ? '120px' : '80px',
     backgroundImage: windowWidth > 1500 ? "url(../../images/unrealestate.png)" : "url(../../images/unrealestateSmall.png)",
-    // top: windowWidth > 1500 ? '' : '40px',
     backgroundSize: 'auto',
     backgroundRepeat: 'no-repeat'
   };
@@ -6139,7 +6141,7 @@ function Home(props) {
         style: boxStyle,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
           className: "text-2xl ml-6",
-          children: "Search properties for sale"
+          children: boxTitle
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
           className: "float-right cursor-pointer",
           onClick: resetList,
@@ -6177,7 +6179,7 @@ function Home(props) {
             className: "form-group",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
               htmlFor: "exampleFormControlSelect1",
-              children: "Property Type"
+              children: propertyType
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("select", {
               className: "form-control select",
               id: "type",
@@ -6258,7 +6260,7 @@ function Home(props) {
               children: "Search"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+            children: windowWidth > 650 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
               style: links,
               onClick: handleMenuVisChange,
               className: "hover:bg-gray-100 py-1 px-2 border border-400",
@@ -6275,7 +6277,7 @@ function Home(props) {
                   d: "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
                 })
               })
-            })
+            }) : null
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {})]
         })]
       })]

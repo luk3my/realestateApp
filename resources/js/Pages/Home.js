@@ -35,6 +35,9 @@ export default function Home(props) {
         setMenuVis(!showMenu);
     }
 
+    const propertyType = windowWidth > 650 ? 'Property Type' : 'Type';
+    const boxTitle = windowWidth > 650 ? 'Search properties for sale' : 'Search';
+
     const resetList=(e)=> {
         e.stopPropagation();    
         setType('');
@@ -101,7 +104,6 @@ export default function Home(props) {
         width: 'auto',
         height: windowWidth > 1500 ? '120px' : '80px',
         backgroundImage: windowWidth > 1500 ? `url(../../images/unrealestate.png)` : `url(../../images/unrealestateSmall.png)`,
-        // top: windowWidth > 1500 ? '' : '40px',
         backgroundSize: 'auto',
         backgroundRepeat: 'no-repeat'
     };
@@ -189,7 +191,7 @@ export default function Home(props) {
                 <header style={headerStyle} className="w-full h-11">
                     <div id="logo" style={logoStyle}></div>
                     <div style={boxStyle}>
-                        <span className="text-2xl ml-6">Search properties for sale</span>
+                        <span className="text-2xl ml-6">{boxTitle}</span>
                         <span className="float-right cursor-pointer" onClick={resetList}>
                                <svg class="h-6 w-6 fill-white"
                                     width="24" height="24" 
@@ -210,7 +212,7 @@ export default function Home(props) {
 
                         <form className="pl-6 pr-6 h-35 grid grid-cols-3 gap-4 content-center" onSubmit={handleSubmit}>
                             <div className="form-group">
-                                <label htmlFor="exampleFormControlSelect1">Property Type</label>
+                                <label htmlFor="exampleFormControlSelect1">{propertyType}</label>
                                 <select className="form-control select" id="type" onChange={handleTypeChange}>
                                     <option value="" selected>All</option>
                                      {types.length > 0 ? (
@@ -250,11 +252,14 @@ export default function Home(props) {
                                 <button style={links} type="submit" className="hover:bg-gray-100 hover:text-black font-semibold py-1 px-2 border border-400 mr-2 mb-1">Search</button>
                             </span>
                             <span>
-                                <button style={links} onClick={handleMenuVisChange} className="hover:bg-gray-100 py-1 px-2 border border-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                                    </svg>
-                                </button>
+                                { windowWidth > 650 ? (
+                                    <button style={links} onClick={handleMenuVisChange} className="hover:bg-gray-100 py-1 px-2 border border-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                                        </svg>
+                                    </button>
+                                    ) : null
+                                }
                             </span>
                             <span></span>
                         </form>
@@ -297,13 +302,11 @@ export default function Home(props) {
                         />
                     </div>  
                     </div>
-                    { 
-                        listings.data.length > 0 && windowWidth > 1550 ? (
+                    { listings.data.length > 0 && windowWidth > 1550 ? (
                             <div style={addStyle} className="pr-6">
                                 <img src="url(../../images/fakeAdd.jpg" className="shadow-sm"/>
                             </div>
-                        ) : null
-                    }
+                        ) : null }
                 </div>  
 
                 <PopoutMenu show={showMenu} 
