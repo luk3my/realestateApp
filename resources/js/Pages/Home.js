@@ -4,6 +4,7 @@ import axios from 'axios';
 import Pagination from 'react-js-pagination';
 import Tile from './Tile';
 import PopoutMenu from './PopoutMenu';
+import FilterForm from './FilterForm';
 
 export default function Home(props) {
 
@@ -210,59 +211,18 @@ export default function Home(props) {
                                 </svg>
                         </span><br/><br/>
 
-                        <form className="pl-6 pr-6 h-35 grid grid-cols-3 gap-4 content-center" onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label htmlFor="exampleFormControlSelect1">{propertyType}</label>
-                                <select className="form-control select" id="type" onChange={handleTypeChange}>
-                                    <option value="" selected>All</option>
-                                     {types.length > 0 ? (
-                                        types.map(type => (    
-                                            <option value={type.id}>{type.name}</option>
-                                     ))
-                                ) : (
-                                     <option value="" disabled selected>There are no options to show</option>
-                                )} 
-                                </select>
-                                <div id="type_error"></div>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="exampleFormControlSelect1">Suburb</label>
-                                <select className="form-control select" id="suburb" onChange={handleSuburbChange}>
-                                    <option value="" selected>All</option>
-                                   {suburbs.length > 0 ? (
-                                        suburbs.map(suburb => (    
-                                            <option value={suburb.id}>{suburb.name}</option>
-                                     ))
-                                ) : (
-                                     <option value="" disabled selected>There are no options to show</option>
-                                )} 
-                                </select>
-                                <div id="type_error"></div>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="exampleFormControlSelect1">Price</label>
-                                <select className="form-control select" id="price" onChange={handlePriceChange}>
-                                    <option value="" selected>All</option>
-                                    <option value="<">&lt; 500k</option>
-                                    <option value=">">&gt; 500k</option>
-                                </select>
-                                <div id="type_error"></div>
-                            </div>
-                            <span>
-                                <button style={links} type="submit" className="hover:bg-gray-100 hover:text-black font-semibold py-1 px-2 border border-400 mr-2 mb-1">Search</button>
-                            </span>
-                            <span>
-                                { windowWidth > 650 ? (
-                                    <button style={links} onClick={handleMenuVisChange} className="hover:bg-gray-100 py-1 px-2 border border-400">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                                        </svg>
-                                    </button>
-                                    ) : null
-                                }
-                            </span>
-                            <span></span>
-                        </form>
+                        <FilterForm
+                        handleSubmit={handleSubmit.bind(this)}
+                        propertyType={propertyType}
+                        handleTypeChange={handleTypeChange.bind(this)}
+                        types={types}
+                        handleSuburbChange={handleSuburbChange.bind(this)}
+                        suburbs={suburbs}
+                        handlePriceChange={handlePriceChange.bind(this)}
+                        windowWidth={windowWidth}
+                        links={links}
+                        handleMenuVisChange={handleMenuVisChange.bind(this)}>
+                        </FilterForm>
 
                     </div>
                 </header>
