@@ -5886,7 +5886,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function FilterForm(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
-    className: "pl-6 pr-6 h-35 grid grid-cols-3 gap-4 content-center",
+    className: "pl-6 pr-6 h-35 grid grid-cols-".concat(props.cols, " gap-4 content-center text-").concat(props.color),
     onSubmit: props.handleSubmit,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "form-group",
@@ -5973,7 +5973,7 @@ function FilterForm(props) {
         children: "Search"
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-      children: props.windowWidth > 650 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      children: props.windowWidth > 650 && props.cols == 3 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
         style: props.links,
         onClick: props.handleMenuVisChange,
         className: "hover:bg-gray-100 py-1 px-2 border border-400",
@@ -6045,7 +6045,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Home(props) {
-  var _addStyle, _jsx2;
+  var _addStyle, _jsx2, _jsx3;
 
   // Window size hooks
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(window.innerWidth),
@@ -6123,6 +6123,7 @@ function Home(props) {
 
   var propertyType = windowWidth > 650 ? 'Property Type' : 'Type';
   var boxTitle = windowWidth > 650 ? 'Search properties for sale' : 'Search';
+  var cols = windowWidth > 650 ? 3 : 1;
 
   var resetList = function resetList(e) {
     e.stopPropagation();
@@ -6199,7 +6200,7 @@ function Home(props) {
     padding: '5px',
     color: '#FFFFFF',
     width: '80%',
-    height: '250px'
+    height: windowWidth > 650 ? '250px' : '435px'
   }, "padding", '15px');
 
   var addStyle = (_addStyle = {
@@ -6313,7 +6314,9 @@ function Home(props) {
           handlePriceChange: handlePriceChange.bind(this),
           windowWidth: windowWidth,
           links: links,
-          handleMenuVisChange: handleMenuVisChange.bind(this)
+          handleMenuVisChange: handleMenuVisChange.bind(this),
+          cols: cols,
+          color: 'white'
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
@@ -6357,12 +6360,19 @@ function Home(props) {
           className: "shadow-sm"
         })
       }) : null]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_PopoutMenu__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_PopoutMenu__WEBPACK_IMPORTED_MODULE_5__["default"], (_jsx3 = {
       show: showMenu,
       handleMenuVisChange: handleMenuVisChange.bind(this),
+      handleSubmit: handleSubmit.bind(this),
+      propertyType: propertyType,
+      handleTypeChange: handleTypeChange.bind(this),
       types: types,
-      suburbs: suburbs
-    }), showMenu ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      handleSuburbChange: handleSuburbChange.bind(this),
+      suburbs: suburbs,
+      handlePriceChange: handlePriceChange.bind(this),
+      windowWidth: windowWidth,
+      links: links
+    }, _defineProperty(_jsx3, "handleMenuVisChange", handleMenuVisChange.bind(this)), _defineProperty(_jsx3, "cols", 1), _defineProperty(_jsx3, "color", 'white'), _jsx3)), showMenu ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
       style: greyout
     }) : null]
   });
@@ -6456,7 +6466,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ popoutMenu)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _FilterForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FilterForm */ "./resources/js/Pages/FilterForm.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -6482,11 +6494,11 @@ function popoutMenu(props) {
     color: '#B8B8B8',
     borderColor: '#B8B8B8'
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     style: popoutStyle,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       style: contentStyle,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("svg", {
         style: chevronStyle,
         onClick: props.handleMenuVisChange,
         xmlns: "http://www.w3.org/2000/svg",
@@ -6494,107 +6506,27 @@ function popoutMenu(props) {
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
           "stroke-linecap": "round",
           "stroke-linejoin": "round",
           "stroke-width": "2",
           d: "M11 19l-7-7 7-7m8 14l-7-7 7-7"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
-        className: "pl-6 pr-6 h-35 grid grid-cols-1 gap-4 content-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-          className: "mb-1 mt-5 text-white",
-          children: "Advanced Filters"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
-          className: "mb-1 text-grey",
-          children: "(Work in progress)"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "form-group",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-            className: "text-white",
-            htmlFor: "exampleFormControlSelect1",
-            children: "Property Type"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
-            className: "form-control select",
-            id: "type",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-              value: "",
-              selected: true,
-              children: "All"
-            }), props.types.length > 0 ? props.types.map(function (type) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                value: type.id,
-                children: type.name
-              }, type.id);
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-              value: "",
-              disabled: true,
-              selected: true,
-              children: "There are no options to show"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            id: "type_error"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "form-group",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-            className: "text-white",
-            htmlFor: "exampleFormControlSelect1",
-            children: "Suburb"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
-            className: "form-control select",
-            id: "suburb",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-              value: "",
-              selected: true,
-              children: "All"
-            }), props.suburbs.length > 0 ? props.suburbs.map(function (suburb) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                value: suburb.id,
-                children: suburb.name
-              }, suburb.id);
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-              value: "",
-              disabled: true,
-              selected: true,
-              children: "There are no options to show"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            id: "type_error"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "form-group",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-            className: "text-white",
-            htmlFor: "exampleFormControlSelect1",
-            children: "Price"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
-            className: "form-control select",
-            id: "price",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-              value: "",
-              selected: true,
-              children: "All"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-              value: "<",
-              children: "< 500k"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-              value: ">",
-              children: "> 500k"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            id: "type_error"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            style: links
-            /**type="submit"**/
-            ,
-            className: "hover:bg-gray-100 font-semibold py-1 px-2 border border-400 mr-2 mb-1",
-            disabled: true,
-            children: "Search"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
+        className: "text-white mt-3 mb-10 ml-4",
+        children: "Advanced Filters"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_FilterForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        handleSubmit: props.handleSubmit,
+        propertyType: props.propertyType,
+        handleTypeChange: props.handleTypeChange,
+        types: props.types,
+        handleSuburbChange: props.handleSuburbChange,
+        suburbs: props.suburbs,
+        handlePriceChange: props.handlePriceChange,
+        windowWidth: props.windowWidth,
+        links: props.links,
+        handleMenuVisChange: props.handleMenuVisChange,
+        color: props.color
       })]
     })
   });

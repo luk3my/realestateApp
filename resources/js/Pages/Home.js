@@ -38,6 +38,7 @@ export default function Home(props) {
 
     const propertyType = windowWidth > 650 ? 'Property Type' : 'Type';
     const boxTitle = windowWidth > 650 ? 'Search properties for sale' : 'Search';
+    const cols = windowWidth > 650 ? 3 : 1;
 
     const resetList=(e)=> {
         e.stopPropagation();    
@@ -119,7 +120,7 @@ export default function Home(props) {
         padding: '5px',
         color: '#FFFFFF',
         width: '80%',
-        height: '250px',
+        height: windowWidth > 650 ? '250px' : '435px',
         padding: '15px'
     };
 
@@ -212,17 +213,19 @@ export default function Home(props) {
                         </span><br/><br/>
 
                         <FilterForm
-                        handleSubmit={handleSubmit.bind(this)}
-                        propertyType={propertyType}
-                        handleTypeChange={handleTypeChange.bind(this)}
-                        types={types}
-                        handleSuburbChange={handleSuburbChange.bind(this)}
-                        suburbs={suburbs}
-                        handlePriceChange={handlePriceChange.bind(this)}
-                        windowWidth={windowWidth}
-                        links={links}
-                        handleMenuVisChange={handleMenuVisChange.bind(this)}>
-                        </FilterForm>
+                            handleSubmit={handleSubmit.bind(this)}
+                            propertyType={propertyType}
+                            handleTypeChange={handleTypeChange.bind(this)}
+                            types={types}
+                            handleSuburbChange={handleSuburbChange.bind(this)}
+                            suburbs={suburbs}
+                            handlePriceChange={handlePriceChange.bind(this)}
+                            windowWidth={windowWidth}
+                            links={links}
+                            handleMenuVisChange={handleMenuVisChange.bind(this)}
+                            cols={cols}
+                            color={'white'}
+                        />
 
                     </div>
                 </header>
@@ -271,8 +274,18 @@ export default function Home(props) {
 
                 <PopoutMenu show={showMenu} 
                             handleMenuVisChange={handleMenuVisChange.bind(this)}
+                            handleSubmit={handleSubmit.bind(this)}
+                            propertyType={propertyType}
+                            handleTypeChange={handleTypeChange.bind(this)}
                             types={types}
+                            handleSuburbChange={handleSuburbChange.bind(this)}
                             suburbs={suburbs}
+                            handlePriceChange={handlePriceChange.bind(this)}
+                            windowWidth={windowWidth}
+                            links={links}
+                            handleMenuVisChange={handleMenuVisChange.bind(this)}
+                            cols={1}
+                            color={'white'}
                 />
 
                 { showMenu ? <div style={greyout}></div> : null }

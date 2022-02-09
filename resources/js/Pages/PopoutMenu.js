@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import FilterForm from './FilterForm';
 
 export default function popoutMenu(props) {
 
@@ -34,52 +35,21 @@ export default function popoutMenu(props) {
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
                 </svg>
 
-                 <form className="pl-6 pr-6 h-35 grid grid-cols-1 gap-4 content-center">
-                            <h3 className="mb-1 mt-5 text-white">Advanced Filters</h3>
-                            <h6 className="mb-1 text-grey">(Work in progress)</h6>
-                            <div className="form-group">
-                                <label className="text-white" htmlFor="exampleFormControlSelect1">Property Type</label>
-                                <select className="form-control select" id="type">
-                                    <option value="" selected>All</option>
-                                     {props.types.length > 0 ? (
-                                        props.types.map(type => (    
-                                            <option key={type.id} value={type.id}>{type.name}</option>
-                                     ))
-                                ) : (
-                                     <option value="" disabled selected>There are no options to show</option>
-                                )} 
-                                </select>
-                                <div id="type_error"></div>
-                            </div>
-                            <div className="form-group">
-                                <label className="text-white" htmlFor="exampleFormControlSelect1">Suburb</label>
-                                <select className="form-control select" id="suburb">
-                                    <option value="" selected>All</option>
-                                   {props.suburbs.length > 0 ? (
-                                        props.suburbs.map(suburb => (    
-                                            <option key={suburb.id} value={suburb.id}>{suburb.name}</option>
-                                     ))
-                                ) : (
-                                     <option value="" disabled selected>There are no options to show</option>
-                                )} 
-                                </select>
-                                <div id="type_error"></div>
-                            </div>
-                            <div className="form-group">
-                                <label className="text-white" htmlFor="exampleFormControlSelect1">Price</label>
-                                <select className="form-control select" id="price">
-                                    <option value="" selected>All</option>
-                                    <option value="<">&lt; 500k</option>
-                                    <option value=">">&gt; 500k</option>
-                                </select>
-                                <div id="type_error"></div>
-                            </div>
-                            <span>
-                                <button style={links} /**type="submit"**/ className="hover:bg-gray-100 font-semibold py-1 px-2 border border-400 mr-2 mb-1" disabled>Search</button>
-                            </span>
-                            <span></span>
-                            <span></span>
-                    </form>
+                <h3 className="text-white mt-3 mb-10 ml-4">Advanced Filters</h3>
+
+                <FilterForm
+                    handleSubmit={props.handleSubmit}
+                    propertyType={props.propertyType}
+                    handleTypeChange={props.handleTypeChange}
+                    types={props.types}
+                    handleSuburbChange={props.handleSuburbChange}
+                    suburbs={props.suburbs}
+                    handlePriceChange={props.handlePriceChange}
+                    windowWidth={props.windowWidth}
+                    links={props.links}
+                    handleMenuVisChange={props.handleMenuVisChange}
+                    color={props.color}
+                />
 
             </div>
         </div>
