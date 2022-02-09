@@ -114,7 +114,7 @@ export default function Home(props) {
         position: 'relative',
         marginLeft: 'auto',
         marginRight: 'auto',
-        top: '120px',
+        top: windowWidth > 650 ? '120px' : '100px',
         zIndex: '40',
         backgroundColor: 'rgba(0,0,0,.6)',
         padding: '5px',
