@@ -37,5 +37,10 @@ class Listing extends Model
                 ->whereExists(fn($query) =>
                     $query->where('listings.price', $limit, 500000))
         );
+          $query->when($filters['rooms'] ?? false, fn($query, $rooms) =>
+            $query
+                ->whereExists(fn($query) =>
+                    $query->where('listings.rooms', $rooms))
+        );
     }
 }

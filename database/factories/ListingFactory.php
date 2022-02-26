@@ -4,6 +4,7 @@ namespace Database\Factories;
 use App\Models\Type;
 use App\Models\Suburb;
 
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ListingFactory extends Factory
@@ -16,6 +17,7 @@ class ListingFactory extends Factory
      
     public function definition()
     {
+      
         // dd($this->faker->image(storage_path('app/public/images'), 400, 300));
         return [
             'title' => $this->faker->sentence,

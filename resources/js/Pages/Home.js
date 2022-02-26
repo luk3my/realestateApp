@@ -1,10 +1,11 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect, useRef, } from 'react'
 import { Link, Head } from '@inertiajs/inertia-react';
 import axios from 'axios';
 import Pagination from 'react-js-pagination';
 import Tile from './Tile';
 import PopoutMenu from './PopoutMenu';
 import FilterForm from './FilterForm';
+import { ListingProvider } from './ListingContext'
 
 export default function Home(props) {
 
@@ -19,7 +20,6 @@ export default function Home(props) {
         window.addEventListener('resize', handleWindowResize);
         return () => window.removeEventListener('resize', handleWindowResize);
     });
-
 
     const [listings, setListings] = useState({...props.Listings});
     const [types, setTypes] = useState({...props.Types});
@@ -45,7 +45,6 @@ export default function Home(props) {
         setType('');
         setSuburb('');
         setPrice('');
-        console.log(typeVal)
         // Hooks won't update in time to use getData (takes 2 clicks) - this is a hack 
         axios.post(`listingsIndex?page=${'1'}`, {
             type: '',
@@ -272,22 +271,26 @@ export default function Home(props) {
                         ) : null }
                 </div>  
 
-                <PopoutMenu show={showMenu} 
-                            handleMenuVisChange={handleMenuVisChange.bind(this)}
-                            handleSubmit={handleSubmit.bind(this)}
-                            propertyType={propertyType}
-                            handleTypeChange={handleTypeChange.bind(this)}
-                            types={types}
-                            handleSuburbChange={handleSuburbChange.bind(this)}
-                            suburbs={suburbs}
-                            handlePriceChange={handlePriceChange.bind(this)}
-                            windowWidth={windowWidth}
-                            links={links}
-                            handleMenuVisChange={handleMenuVisChange.bind(this)}
-                            cols={1}
-                            color={'white'}
-                />
-
+                { windowWidth > 1155 ? (
+                    <ListingProvider value={windowWidth}>
+                        <PopoutMenu show={showMenu} 
+                                    handleMenuVisChange={handleMenuVisChange.bind(this)}
+                                    handleSubmit={handleSubmit.bind(this)}
+                                    propertyType={propertyType}
+                                    handleTypeChange={handleTypeChange.bind(this)}
+                                    types={types}
+                                    handleSuburbChange={handleSuburbChange.bind(this)}
+                                    suburbs={suburbs}
+                                    handlePriceChange={handlePriceChange.bind(this)}
+                                    windowWidth={windowWidth}
+                                    links={links}
+                                    handleMenuVisChange={handleMenuVisChange.bind(this)}
+                                    cols={1}
+                                    color={'white'}
+                        />
+                    </ListingProvider>
+                    ) : null
+                }
                 { showMenu ? <div style={greyout}></div> : null }
 
             </div>  

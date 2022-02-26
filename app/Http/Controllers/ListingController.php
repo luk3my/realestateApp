@@ -61,7 +61,7 @@ class ListingController extends Controller
         return Listing::join('types', 'types.id', 'listings.type_id')
             ->join('suburbs', 'suburbs.id', 'listings.suburb_id')
             ->select('listings.*','types.name as type', 'suburbs.name as suburb')
-            ->filter(request(['type', 'suburb', 'price']))
+            ->filter(request(['type', 'suburb', 'price', 'rooms']))
             ->paginate(5);
     }    
 }

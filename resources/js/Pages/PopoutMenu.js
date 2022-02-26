@@ -1,7 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import FilterForm from './FilterForm';
+import React, {useState, useEffect, useContext} from 'react';
+import FilterFormSide from './FilterFormSide';
+import ListingContext from './ListingContext'
 
 export default function popoutMenu(props) {
+    
+    const cxt = useContext(ListingContext);
+    console.log(cxt)
 
     const popoutStyle = {
         position: 'fixed',
@@ -20,7 +24,7 @@ export default function popoutMenu(props) {
     const chevronStyle = {
         cursor: 'pointer',
         float: 'right',
-        height: 'calc(100vh - 20px)'
+        height: 'calc(100vh - 30px)'
     }
 
     const links = {
@@ -37,7 +41,7 @@ export default function popoutMenu(props) {
 
                 <h3 className="text-white mt-3 mb-10 ml-4">Advanced Filters</h3>
 
-                <FilterForm
+                <FilterFormSide
                     handleSubmit={props.handleSubmit}
                     propertyType={props.propertyType}
                     handleTypeChange={props.handleTypeChange}
