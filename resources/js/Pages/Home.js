@@ -140,7 +140,6 @@ export default function Home(props) {
         position: 'fixed',
         top: '0',
         zIndex: '60',
-
     }
 
     const pag = {
@@ -169,6 +168,23 @@ export default function Home(props) {
 
     const numCommas = x => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    const vals = {
+        show: showMenu, 
+        handleMenuVisChange: handleMenuVisChange,
+        handleSubmit: handleSubmit,
+        propertyType: propertyType,
+        handleTypeChange: handleTypeChange,
+        types: types,
+        handleSuburbChange: handleSuburbChange,
+        suburbs: suburbs,
+        handlePriceChange: handlePriceChange,
+        windowWidth: windowWidth,
+        links: links,
+        handleMenuVisChange: handleMenuVisChange,
+        cols: 1,
+        color: 'white'
     }
 
     return (
@@ -272,26 +288,12 @@ export default function Home(props) {
                 </div>  
 
                 { windowWidth > 1155 ? (
-                    <ListingProvider value={windowWidth}>
-                        <PopoutMenu show={showMenu} 
-                                    handleMenuVisChange={handleMenuVisChange.bind(this)}
-                                    handleSubmit={handleSubmit.bind(this)}
-                                    propertyType={propertyType}
-                                    handleTypeChange={handleTypeChange.bind(this)}
-                                    types={types}
-                                    handleSuburbChange={handleSuburbChange.bind(this)}
-                                    suburbs={suburbs}
-                                    handlePriceChange={handlePriceChange.bind(this)}
-                                    windowWidth={windowWidth}
-                                    links={links}
-                                    handleMenuVisChange={handleMenuVisChange.bind(this)}
-                                    cols={1}
-                                    color={'white'}
-                        />
+                    <ListingProvider value={vals}>
+                        <PopoutMenu />
                     </ListingProvider>
                     ) : null
                 }
-                { showMenu ? <div style={greyout}></div> : null }
+                { showMenu ? <div style={greyout} onClick={handleMenuVisChange} ></div> : null }
 
             </div>  
         )

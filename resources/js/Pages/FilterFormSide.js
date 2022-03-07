@@ -1,16 +1,16 @@
 import React, {useState, useEffect, useContext} from 'react';
+import ListingContext from './ListingContext';
 
-
-export default function FilterFormSide(props) {
-
+export default function FilterFormSide() {
+    const cxt = useContext(ListingContext);
     return (
-        <form className={`pl-6 pr-6 h-35 grid grid-cols-${props.cols} gap-2 content-center text-${props.color}`} onSubmit={props.handleSubmit}>
+        <form className={`pl-6 pr-6 h-35 grid grid-cols-${cxt.cols} gap-2 content-center text-${cxt.color}`} onSubmit={cxt.handleSubmit}>
             <div className="form-group">
-                <label htmlFor="exampleFormControlSelect1">{props.propertyType}</label>
-                    <select className="form-control select" id="type" onChange={props.handleTypeChange}>
+                <label htmlFor="exampleFormControlSelect1">{cxt.propertyType}</label>
+                    <select className="form-control select" id="type" onChange={cxt.handleTypeChange}>
                         <option value="" selected>All</option>
-                            {props.types.length > 0 ? (
-                                props.types.map(type => (    
+                            {cxt.types.length > 0 ? (
+                                cxt.types.map(type => (    
                                     <option value={type.id}>{type.name}</option>
                                      ))
                                 ) : (
@@ -21,10 +21,10 @@ export default function FilterFormSide(props) {
             </div>
             <div className="form-group">
                 <label htmlFor="exampleFormControlSelect1">Suburb</label>
-                <select className="form-control select" id="suburb" onChange={props.handleSuburbChange}>
+                <select className="form-control select" id="suburb" onChange={cxt.handleSuburbChange}>
                     <option value="" selected>All</option>
-                        {props.suburbs.length > 0 ? (
-                            props.suburbs.map(suburb => (    
+                        {cxt.suburbs.length > 0 ? (
+                            cxt.suburbs.map(suburb => (    
                                 <option value={suburb.id}>{suburb.name}</option>
                                      ))
                                 ) : (
@@ -35,7 +35,7 @@ export default function FilterFormSide(props) {
             </div>
             <div className="form-group">
                 <label htmlFor="exampleFormControlSelect1">Price</label>
-                <select className="form-control select" id="price" onChange={props.handlePriceChange}>
+                <select className="form-control select" id="price" onChange={cxt.handlePriceChange}>
                     <option value="" selected>All</option>
                     <option value="<">&lt; 500k</option>
                     <option value=">">&gt; 500k</option>
@@ -76,7 +76,7 @@ export default function FilterFormSide(props) {
 
              {/* <div className="form-group">
                 <label htmlFor="exampleFormControlSelect1">Area</label>
-                <select className="form-control select" id="price" onChange={props.handlePriceChange}>
+                <select className="form-control select" id="price" onChange={cxt.handlePriceChange}>
                     <option value="" selected>All</option>
                     <option value="<">&lt; 500k</option>
                     <option value=">">&gt; 500k</option>
@@ -85,11 +85,11 @@ export default function FilterFormSide(props) {
             </div> */}
 
             <span>
-                <button style={props.links} type="submit" className="hover:bg-gray-100 hover:text-black font-semibold py-1 px-2 border border-400 mr-2 mb-1">Search</button>
+                <button style={cxt.links} type="submit" onClick={cxt.handleMenuVisChange} className="hover:bg-gray-100 hover:text-black font-semibold py-1 px-2 border border-400 mr-2 mb-1">Search</button>
             </span>
             <span>
-            { (props.windowWidth > 650 && props.cols == 3) ? (
-                <button style={props.links} onClick={props.handleMenuVisChange} className="hover:bg-gray-100 py-1 px-2 border border-400">
+            { (cxt.windowWidth > 650 && cxt.cols == 3) ? (
+                <button style={cxt.links} onClick={cxt.handleMenuVisChange} className="hover:bg-gray-100 py-1 px-2 border border-400">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                     </svg>
